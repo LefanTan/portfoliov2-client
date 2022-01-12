@@ -16,6 +16,7 @@
 
 :root {
   --header-height: 4.5rem;
+  --horizontal-padding: 2rem;
   --purple: #4d4468;
   --beige: #e4ddd4;
   --red: #da5c46;
@@ -42,6 +43,7 @@ h1 {
 
 p {
   font-family: "Bellota Text", cursive;
+  font-size: 1.1rem;
 }
 
 .hide {

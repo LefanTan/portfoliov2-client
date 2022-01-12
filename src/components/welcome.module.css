@@ -1,6 +1,6 @@
 .section {
   background-color: var(--dirty-blue);
-  background-image: url("../assets/paper2.png");
+  background-image: url("../assets/paper.png");
   background-size: cover;
   min-height: 90vh;
   width: 100%;
@@ -8,7 +8,9 @@
   display: flex;
   justify-content: space-evenly;
   position: relative;
-  padding: var(--header-height) 2rem 0rem 2rem;
+  padding-top: var(--header-height);
+  padding-left: var(--horizontal-padding);
+  padding-right: var(--horizontal-padding);
 }
 
 .title {
