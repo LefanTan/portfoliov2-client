@@ -14,7 +14,36 @@
   padding: 0px;
 }
 
+:root {
+  --header-height: 4.5rem;
+  --purple: #4d4468;
+  --beige: #e4ddd4;
+  --red: #da5c46;
+  --dark-blue: #221c50;
+  --light-blue: #2fb3b9;
+  --blue: #41a3a8;
+  --dirty-blue: #41a3a8;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
 body {
   font-family: "Bellota Text", cursive;
   font-weight: "400";
+}
+
+main {
+  min-width: fit-content;
+}
+
+h1 {
+  font-family: "Market Deco";
+  font-weight: 400;
+}
+
+p {
+  font-family: "Bellota Text", cursive;
+}
+
+.hide {
+  display: none;
 }

@@ -1,0 +1,18 @@
+.section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--beige);
+  background-image: url("../assets/paper2.png");
+  background-size: cover;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.section > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
