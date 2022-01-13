@@ -1,44 +1,67 @@
 import styles from "./header.module.css";
 import { CgMenuGridO, CgArrowRight } from "react-icons/cg";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { throttle } from "./helpers/lodash";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
+  const [blackAndWhite, setBW] = useState(false);
   const ref = useRef<HTMLElement>(null);
   let prevScrollY = 0;
+  let totalScrolledUp = 0;
 
   const onScroll = throttle((event: Event) => {
     let clientHeight = ref.current?.clientHeight;
     if (!clientHeight || !ref.current) return;
 
-    if (prevScrollY === 0) {
-      prevScrollY = window.scrollY;
-      return;
-    }
     const delta = prevScrollY - window.scrollY;
 
+    // If delta is > 0, its scrolling up
+    if (delta > 0) {
+      totalScrolledUp += delta;
+    } else {
+      totalScrolledUp = 0;
+    }
+
     if (
+      totalScrolledUp >= clientHeight ||
       window.scrollY < clientHeight ||
-      (delta > clientHeight && !ref.current.classList.contains(styles.show))
+      (delta >= clientHeight && !ref.current.classList.contains(styles.show))
     ) {
-      console.log("adding");
-      ref.current.classList.add(styles.show);
+      ref.current.classList.remove(styles.hide);
     } else if (delta < 0) {
-      ref.current.classList.remove(styles.show);
+      ref.current.classList.add(styles.hide);
     }
 
     prevScrollY = window.scrollY;
-  }, 100);
+  }, 50);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
 
+  useLayoutEffect(() => {
+    // Apparently changing document.body.style messes all the css up
+
+    const main = document.querySelector("main");
+    const val = `grayscale(${blackAndWhite ? 1 : 0})`;
+    if (main && ref.current) {
+      main.style.filter = val;
+      ref.current!.style.filter = val;
+    }
+  }, [blackAndWhite]);
+
   return (
     <header ref={ref} className={styles.header}>
+      <button
+        onClick={() => setBW(!blackAndWhite)}
+        aria-label="switch"
+        className={`${styles.light_switch} ${
+          blackAndWhite ? styles.light_switch_active : ""
+        }`}
+      ></button>
       <div className={styles.mobile_title}>
         <a href="#home" className={`${styles.title}`}>
           Lefan

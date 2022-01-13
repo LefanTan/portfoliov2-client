@@ -2,17 +2,16 @@
   position: fixed;
   width: 100%;
   height: var(--header-height);
-  transform: translateY(calc(var(--header-height) * -1 - 20px));
 
   background-color: var(--beige);
   box-shadow: 0px 4px 5px #35353562;
 
-  z-index: 5;
   transition: transform 200ms;
+  z-index: 5;
 }
 
-.show {
-  transform: translateY(0px);
+.hide {
+  transform: translateY(calc(var(--header-height) * -1 - 20px));
 }
 
 nav {
@@ -34,6 +33,28 @@ nav ul {
   justify-content: space-evenly;
 }
 
+.light_switch {
+  background-image: url("../assets/light_switch.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+
+  width: 30px;
+  height: 50px;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  z-index: 1;
+  transform: rotateZ(180deg) translateY(50%);
+}
+
+.light_switch_active {
+  transform: translateY(-50%);
+}
+
 .header_anchor {
   font-family: "Market Deco";
   color: white;
@@ -42,6 +63,7 @@ nav ul {
 
   text-decoration: none;
   position: relative;
+  transition: 200ms;
 }
 
 .header_anchor:after {
@@ -54,6 +76,10 @@ nav ul {
   width: 100%;
   height: 3px;
   border-bottom: 3px dotted var(--red);
+}
+
+.header_anchor:hover {
+  font-size: 1.65rem;
 }
 
 .header_anchor:focus {
@@ -141,8 +167,10 @@ nav ul {
     position: fixed;
     top: 0px;
     right: -100%;
+    bottom: 0px;
 
     width: auto;
+    height: calc(100vh * 2);
     padding: 3rem 1rem;
     background-color: var(--beige);
     align-items: flex-start;

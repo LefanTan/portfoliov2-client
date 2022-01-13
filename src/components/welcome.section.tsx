@@ -2,6 +2,7 @@ import styles from "./welcome.module.css";
 import tv from "../assets/tv.png";
 import photo from "../assets/tv_photo.jpg";
 import noise from "../assets/tv_noise.gif";
+import dot from "../assets/pattern.png";
 import { useState } from "react";
 
 const WelcomeSection = () => {
@@ -16,10 +17,12 @@ const WelcomeSection = () => {
           websites/application that looks good, works well, and accessible for
           everyone!
         </p>
-        <button className={styles.see_more} />
+        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+        <a href="#about" className={styles.see_more} aria-label="see more" />
       </div>
 
       <div className={styles.tv_container}>
+        <img src={dot} alt="dot background" className={styles.dot} />
         <button
           onClick={() => setTvOn(!tvOn)}
           aria-label="tv switch"
