@@ -1,6 +1,6 @@
 import styles from "./header.module.css";
 import { CgMenuGridO, CgArrowRight } from "react-icons/cg";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { throttle } from "./helpers/lodash";
 
 const Header = () => {

@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./about.module.css";
 import dot from "../assets/pattern.png";
 import noise from "../assets/noise.png";
-import photo1 from "../assets/photo1.jpg";
-import photo2 from "../assets/photo2.jpg";
+import photo1 from "../assets/backup_photo1.jpg";
+import photo2 from "../assets/backup_photo2.jpg";
 import { FaLinkedinIn, FaGithubAlt } from "react-icons/fa";
 
 const AboutSection = () => {
