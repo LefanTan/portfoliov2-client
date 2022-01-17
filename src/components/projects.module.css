@@ -1,0 +1,162 @@
+.section {
+  min-height: 100vh;
+  background-image: url("../assets/paper.png");
+  background-size: cover;
+  background-color: var(--dark-grey);
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem var(--horizontal-padding);
+  padding-bottom: 3rem;
+
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.section > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  justify-items: center;
+  align-items: start;
+  color: var(--beige);
+}
+
+.title {
+  width: max(35vmax, 20rem);
+  margin-bottom: 2rem;
+  grid-column: 1 / -1;
+}
+
+.project_container {
+  --padding: 2rem;
+  width: 100%;
+  min-height: 10vh;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: var(--padding);
+}
+
+.project_container > img:first-child {
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+  aspect-ratio: 1.5/1;
+
+  object-fit: cover;
+  border: 7px solid #ffffdd;
+
+  filter: grayscale(0.5);
+}
+
+.spread_row {
+  width: 100%;
+  max-height: calc(100% * 3.88);
+  aspect-ratio: 3.5 / 1;
+
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  padding-right: 0.25rem;
+
+  overflow: hidden;
+  position: relative;
+}
+
+.spread_row > * {
+  z-index: 1;
+}
+
+.spread_row > img {
+  z-index: 0;
+
+  position: absolute;
+  top: 0px;
+  left: -1%;
+
+  width: calc(102.5%);
+  aspect-ratio: 3.25 / 1;
+}
+
+.spread_row > h2 {
+  font-family: "Cabin Condensed", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 500;
+
+  color: black;
+  letter-spacing: 3px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spread_row > p {
+  font-size: 0.95rem;
+  flex: 1;
+  font-family: "Cabin Condensed", sans-serif;
+  color: black;
+  overflow: auto;
+}
+
+.project_container > *:last-child {
+  margin-top: 0.25rem;
+  align-self: flex-end;
+  width: 20%;
+  aspect-ratio: 2.1/1;
+
+  background-image: url("../assets/ticket.png");
+  background-color: transparent;
+  background-size: contain;
+}
+
+.project_container > *:last-child:hover {
+  background-image: url("../assets/ticket_tear.png");
+}
+
+.arrow {
+  min-width: 100px;
+  height: 50px;
+  background-color: transparent;
+  background-image: url("../assets/neon_arrow.png");
+  background-size: 115% 130%;
+  background-position: -5px -10px;
+  transition: 200ms;
+
+  cursor: pointer;
+}
+
+.arrow:hover {
+  transform: translateX(10px);
+}
+
+.show_more_button {
+  background-color: transparent;
+  width: 15rem;
+  height: 3rem;
+
+  font-family: "Market Deco", sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 0.5px white;
+  text-shadow: 0 0 5px var(--neon);
+  font-size: 2rem;
+
+  transition: 200ms;
+}
+
+.show_more_button:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 4px white;
+}
+
+@media (max-width: 800px) {
+  .section > div {
+    grid-template-columns: 1fr;
+  }
+
+  .project_container {
+    padding: var(--padding) 0rem;
+  }
+}

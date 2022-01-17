@@ -15,6 +15,11 @@
       href="https://fonts.googleapis.com/css2?family=Bellota+Text:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -31,6 +36,55 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
+      .loader {
+        background-color: #e4ddd4;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .loader > div {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 200px;
+        height: 200px;
+      }
+
+      .loader img:first-child {
+        position: absolute;
+        z-index: -1;
+
+        top: 40%;
+        left: 10%;
+        width: 80%;
+        height: 50%;
+      }
+
+      .loader img:last-child {
+        width: 100%;
+        height: 100%;
+      }
+
+      .loader-hide {
+        display: none;
+        opacity: 0;
+      }
+
+      @media (max-width: 800px) {
+        .loader > div {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -45,5 +99,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <div class="loader">
+      <div><img src="./loading_anim.gif" /><img src="./loading_tv.png" /></div>
+    </div>
   </body>
 </html>

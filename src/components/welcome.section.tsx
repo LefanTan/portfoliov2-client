@@ -2,11 +2,14 @@ import styles from "./welcome.module.css";
 import tv from "../assets/tv.png";
 import photo from "../assets/tv_photo.jpg";
 import noise from "../assets/tv_noise.gif";
+import nosie2 from "../assets/loading_anim.gif";
 import dot from "../assets/pattern.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DataContext } from "./services/data.provider";
 
 const WelcomeSection = () => {
   const [tvOn, setTvOn] = useState(false);
+  const dataContext = useContext(DataContext);
 
   return (
     <section id="home" className={styles.section}>
@@ -29,13 +32,28 @@ const WelcomeSection = () => {
           aria-pressed={tvOn}
           className={tvOn ? styles.rotate : ""}
         />
-        <img alt="tv" src={tv} className={styles.tv} />
-        <img alt="face" src={photo} className={styles.photo} />
+        <img
+          alt="tv"
+          onLoad={() => console.log("tv loaded")}
+          src={tv}
+          className={styles.tv}
+        />
+        <img
+          alt="face"
+          src={dataContext.profile?.mainMediaUrl ?? photo}
+          className={styles.photo}
+        />{" "}
         <img
           alt="noise gif"
           src={noise}
           className={styles.photo}
-          style={{ opacity: tvOn ? 0.55 : 1 }}
+          style={{ opacity: tvOn ? 0.45 : 1 }}
+        />
+        <img
+          alt="noise gif"
+          src={nosie2}
+          className={styles.photo}
+          style={{ opacity: tvOn ? 0 : 1 }}
         />
         <div className={styles.circle} />
       </div>

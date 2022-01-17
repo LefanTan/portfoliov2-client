@@ -1,5 +1,4 @@
 .section {
-  width: 100%;
   min-height: 100vh;
   background-color: var(--beige);
   background-image: url("../assets/paper.png");
@@ -43,12 +42,12 @@
 }
 
 .title {
-  font-size: max(7vmax, 5rem);
+  font-size: max(8vmax, 4.5rem);
   color: var(--red);
-  text-shadow: 7px 7px var(--shadow);
-  -webkit-text-stroke: 2px var(--beige);
+  text-shadow: 5px 5px #be786b7c;
 
   position: relative;
+  white-space: nowrap;
 }
 
 .title:before {
@@ -59,7 +58,7 @@
   width: 100%;
   left: 3px;
   bottom: -5px;
-  border-bottom: 3px solid var(--red);
+  border-bottom: 2px solid var(--red);
 }
 
 .title:after {
@@ -70,7 +69,7 @@
   width: 100%;
   left: 3px;
   bottom: -15px;
-  border-bottom: 3px dotted var(--red);
+  border-bottom: 2px dotted var(--red);
 }
 
 .title + p {
@@ -94,12 +93,16 @@
   background-image: url("../assets/lines_bg.png");
   background-size: 100% 90%;
   background-repeat: no-repeat;
-  color: var(--purple);
+
+  font-family: "Franky", cursive;
 
   font-size: 2.5rem;
   text-align: center;
   width: 7rem;
   margin-top: 1rem;
+
+  filter: invert(51%) sepia(33%) saturate(684%) hue-rotate(134deg)
+    brightness(103%) contrast(86%);
 }
 
 .skills_container {
@@ -113,13 +116,11 @@
   font-family: "Market Deco", sans-serif;
   font-weight: 300;
   font-size: 1.2rem;
-  text-shadow: 3px 3px rgb(49, 49, 49);
 
   padding: 0.45rem 0.75rem;
   margin: 0.15rem;
 
-  box-shadow: 2px 2px var(--shadow);
-  background-color: var(--purple);
+  background-color: var(--blue);
   color: var(--beige);
 }
 
@@ -132,7 +133,7 @@
 .links_container a {
   text-decoration: none;
   margin-right: 0.5rem;
-  color: var(--purple);
+  color: var(--grey);
   transition: 200ms;
 }
 
@@ -140,7 +141,7 @@
   transform: scale(1.1);
 }
 
-.links_container .id {
+.links_container .resume {
   background-image: url("../assets/ribbon_bg.png");
   background-size: 100% 100%;
   background-position: center -5.5px;
@@ -169,7 +170,8 @@
 .photo {
   display: flex;
 
-  width: 75%;
+  max-width: 75%;
+  max-height: 30rem;
   position: relative;
   background-color: var(--beige);
 
@@ -181,6 +183,7 @@
   width: 100%;
   height: 100%;
   filter: grayscale(0.5);
+  object-fit: cover;
 }
 
 .photo > img:last-child {

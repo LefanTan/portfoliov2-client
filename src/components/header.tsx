@@ -2,6 +2,8 @@ import styles from "./header.module.css";
 import { CgMenuGridO, CgArrowRight } from "react-icons/cg";
 import { useLayoutEffect, useRef, useState } from "react";
 import { throttle } from "./helpers/lodash";
+import title from "../assets/title.png";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -46,7 +48,9 @@ const Header = () => {
     // Apparently changing document.body.style messes all the css up
 
     const main = document.querySelector("main");
-    const val = `grayscale(${blackAndWhite ? 1 : 0})`;
+    const val = `grayscale(${blackAndWhite ? 2 : 0}) contrast(${
+      blackAndWhite ? 1.1 : 1
+    })`;
     if (main && ref.current) {
       main.style.filter = val;
       ref.current!.style.filter = val;
@@ -63,8 +67,8 @@ const Header = () => {
         }`}
       ></button>
       <div className={styles.mobile_title}>
-        <a href="#home" className={`${styles.title}`}>
-          Lefan
+        <a href="#home" className={styles.title}>
+          <img src={title} alt="title" />
         </a>
 
         <button onClick={() => setMenu(true)} aria-label="side menu">
@@ -81,27 +85,27 @@ const Header = () => {
             <CgArrowRight size={40} />
           </button>
           <li>
-            <a href="#home" className={styles.header_anchor}>
+            <a href="/#home" className={styles.header_anchor}>
               Home
             </a>
           </li>
           <li>
-            <a href="#" className={styles.header_anchor}>
+            <a href="/#projects" className={styles.header_anchor}>
               Projects
             </a>
           </li>
           <li>
-            <a href="#home" className={styles.title}>
-              Lefan
+            <a href="/#home" className={styles.title}>
+              <img src={title} alt="title" />
             </a>
           </li>
           <li>
-            <a href="#about" className={styles.header_anchor}>
+            <a href="/#about" className={styles.header_anchor}>
               About
             </a>
           </li>
           <li>
-            <a href="#" className={styles.header_anchor}>
+            <a href="/#contact" className={styles.header_anchor}>
               Contact
             </a>
           </li>

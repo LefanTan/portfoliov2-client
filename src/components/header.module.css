@@ -4,14 +4,14 @@
   height: var(--header-height);
 
   background-color: var(--beige);
-  box-shadow: 0px 4px 5px #35353562;
+  box-shadow: 0px 4px 5px #53535362;
 
   transition: transform 200ms;
   z-index: 5;
 }
 
 .hide {
-  transform: translateY(calc(var(--header-height) * -1 - 20px));
+  transform: translateY(calc(var(--header-height) * -1 - 45px));
 }
 
 nav {
@@ -25,8 +25,8 @@ nav {
 
 nav ul {
   list-style-type: none;
-  width: 50%;
-  min-width: 45rem;
+  width: 40%;
+  min-width: 40rem;
 
   display: flex;
   align-items: center;
@@ -56,7 +56,7 @@ nav ul {
 }
 
 .header_anchor {
-  font-family: "Market Deco";
+  font-family: "Market Deco", sans-serif;
   color: white;
   font-size: 1.5rem;
   text-shadow: 2px 2px rgb(97, 97, 97);
@@ -100,35 +100,24 @@ nav ul {
 }
 
 .title {
-  background-image: url("../assets/title.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-
-  text-decoration: none;
-  font-family: "Market Deco";
-  color: white;
-  padding: 0.75rem 3.5rem;
-  text-shadow: none;
-  font-size: 3rem;
-
+  top: 30px;
   position: relative;
-  top: 15px;
-  transition: 200ms;
 }
 
-.title:after {
-  display: none;
+.title img {
+  width: 125px;
+  transition: 200ms;
+  object-fit: contain;
+}
+
+.title img:hover {
+  width: 140px;
 }
 
 .title:focus {
   filter: grayscale(0.75);
   text-shadow: none;
   color: white;
-}
-
-.title:hover {
-  font-size: 3.25rem;
-  padding: 1rem 4rem;
 }
 
 .menu_active {
@@ -147,7 +136,8 @@ nav ul {
 
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: calc(var(--header-height) / 2);
+
   transform: translateY(-50%);
 
   display: none;
@@ -193,6 +183,10 @@ nav ul {
   /* Hide the title */
   ul > li:nth-child(4) {
     display: none;
+  }
+
+  .title {
+    top: 10px;
   }
 
   .mobile_title {
