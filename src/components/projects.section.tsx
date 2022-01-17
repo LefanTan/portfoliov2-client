@@ -65,7 +65,7 @@ const ProjectsSection = () => {
       </div>
       <Link
         to={`/project/${project.title
-          .match(/\w+/)
+          .match(/\w+/g)
           ?.join("-")
           .toLocaleLowerCase()}`}
         replace

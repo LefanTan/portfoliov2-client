@@ -3,7 +3,7 @@ import { CgMenuGridO, CgArrowRight } from "react-icons/cg";
 import { useLayoutEffect, useRef, useState } from "react";
 import { throttle } from "./helpers/lodash";
 import title from "../assets/title.png";
-import { NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -85,29 +85,39 @@ const Header = () => {
             <CgArrowRight size={40} />
           </button>
           <li>
-            <a href="/#home" className={styles.header_anchor}>
+            <HashLink
+              smooth
+              to="/#home"
+              replace
+              className={styles.header_anchor}
+            >
               Home
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a href="/#projects" className={styles.header_anchor}>
+            <HashLink
+              smooth
+              to="/#projects"
+              replace
+              className={styles.header_anchor}
+            >
               Projects
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a href="/#home" className={styles.title}>
+            <HashLink to="/#home" replace className={styles.title}>
               <img src={title} alt="title" />
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a href="/#about" className={styles.header_anchor}>
+            <HashLink to="/#about" replace className={styles.header_anchor}>
               About
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a href="/#contact" className={styles.header_anchor}>
+            <HashLink to="/#contact" replace className={styles.header_anchor}>
               Contact
-            </a>
+            </HashLink>
           </li>
         </ul>
       </nav>
