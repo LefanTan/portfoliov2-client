@@ -19,8 +19,6 @@ const ProjectDetailsPage = () => {
     );
   }, [params, dataContext.projects]);
 
-  console.log(projectDetail);
-
   return (
     <div className="body">
       <Header />

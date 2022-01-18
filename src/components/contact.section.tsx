@@ -3,15 +3,12 @@ import styles from "./contact.module.css";
 import { FaLinkedinIn, FaGithubAlt, FaRegFilePdf } from "react-icons/fa";
 import { DataContext } from "./services/data.provider";
 import emailjs from "@emailjs/browser";
+import useMediaChange from "./helpers/useMediaChange";
 
 const ContactSection = () => {
   const dataContext = useContext(DataContext);
-  const [mobile, setMobile] = useState(false);
+  const mobile = useMediaChange("(max-width: 800px)");
   const form = useRef<HTMLFormElement>(null);
-
-  const mediaChangeHandler = (ev: MediaQueryListEvent) => {
-    setMobile(ev.matches);
-  };
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -31,19 +28,6 @@ const ContactSection = () => {
         .catch((err) => console.error("Send email failed...", err));
     }
   };
-
-  useEffect(() => {
-    window
-      .matchMedia("(max-width: 800px)")
-      .addEventListener("change", mediaChangeHandler);
-
-    setMobile(window.matchMedia("(max-width: 800px)").matches);
-
-    return () =>
-      window
-        .matchMedia("(max-width: 800px)")
-        .removeEventListener("change", mediaChangeHandler);
-  }, []);
 
   return (
     <section id="contact" className={styles.section}>

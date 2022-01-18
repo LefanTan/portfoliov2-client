@@ -138,9 +138,7 @@
   height: 3rem;
 
   font-family: "Market Deco", sans-serif;
-  color: transparent;
-  -webkit-text-stroke: 0.5px white;
-  text-shadow: 0 0 5px var(--neon);
+  color: white;
   font-size: 2rem;
 
   transition: 200ms;
@@ -151,7 +149,7 @@
   text-shadow: 0 0 4px white;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .section > div {
     grid-template-columns: 1fr;
   }

@@ -157,7 +157,7 @@
   .section {
     justify-content: center;
     align-items: flex-start;
-    padding: 0rem var(--horizontal-padding);
+    padding: 2rem var(--horizontal-padding);
   }
 
   .section > .links_container {
