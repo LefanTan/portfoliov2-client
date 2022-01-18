@@ -79,7 +79,7 @@ const ProjectsSection = () => {
         src={old_texture}
         className="old-texture"
         alt="old texture"
-        style={{ opacity: 0.14 }}
+        style={{ opacity: 0.25 }}
       />
       <img src={title} alt="Project Title" className={styles.title} />
       <div ref={projectsGrid}>
