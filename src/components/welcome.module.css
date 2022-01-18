@@ -161,12 +161,12 @@
 
   z-index: 3;
   transition: transform 200ms;
-  transform: rotateZ(0deg);
-  animation: shake 1s linear infinite;
+  animation: shake 1s linear 0.5s infinite;
 }
 
 .tv_container .rotate {
-  animation: turn 0.2s linear;
+  animation: turn 0.2s linear 0.1s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes shake {
