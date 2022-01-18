@@ -1,9 +1,10 @@
-import { FormEvent, useContext, useEffect, useRef, useState } from "react";
+import { FormEvent, useContext, useRef } from "react";
 import styles from "./contact.module.css";
 import { FaLinkedinIn, FaGithubAlt, FaRegFilePdf } from "react-icons/fa";
 import { DataContext } from "./services/data.provider";
 import emailjs from "@emailjs/browser";
 import useMediaChange from "./helpers/useMediaChange";
+import old_texture from "../assets/old_texture.jpg";
 
 const ContactSection = () => {
   const dataContext = useContext(DataContext);
@@ -31,25 +32,26 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className={styles.section}>
+      <img src={old_texture} className="old-texture" alt="old texture" />
       <div className={styles.links_container}>
         <h1 className={styles.title}>Let's Talk</h1>
         <div>
-          <a
-            href={dataContext.profile?.github}
-            className={styles.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithubAlt size={`3rem`} /> {mobile ? "" : "Github"}
-          </a>
           <a
             href={dataContext.profile?.linkedin}
             className={styles.link}
             target="_blank"
             rel="noreferrer"
           >
-            <FaLinkedinIn style={{ marginBottom: "2px" }} size={`3rem`} />
-            {mobile ? "" : "Linkedin"}
+            <FaLinkedinIn style={{ marginBottom: "2px" }} size={`2.5rem`} />
+            {mobile ? "" : "LinkedIn"}
+          </a>
+          <a
+            href={dataContext.profile?.github}
+            className={styles.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaGithubAlt size={`2.5rem`} /> {mobile ? "" : "Github"}
           </a>
           <a
             href={dataContext.profile?.resumeUrl}
@@ -57,7 +59,7 @@ const ContactSection = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <FaRegFilePdf size={`3rem`} style={{ marginBottom: "5px" }} />
+            <FaRegFilePdf size={`2.5rem`} style={{ marginBottom: "5px" }} />
             {mobile ? "" : "Resume"}
           </a>
         </div>

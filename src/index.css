@@ -13,12 +13,12 @@
   --horizontal-padding: 2rem;
   --beige: #e4ddd4;
   --red: #da5c46;
-  --dark-grey: rgb(19, 19, 19);
+  --dark-grey: rgb(0, 0, 0);
   --grey: #454545;
   --dark-purple: #221c50;
   --light-blue: #2fb3b9;
   --blue: #53acb1;
-  --dirty-blue: #41a3a8;
+  --dirty-blue: #37a1a7;
   --shadow: rgba(49, 49, 49, 0.397);
 }
 
@@ -28,7 +28,7 @@
 }
 
 main {
-  width: fit-content;
+  width: 100%;
   background-color: var(--beige);
   background-image: url("./assets/paper.png");
   background-size: cover;
@@ -63,4 +63,18 @@ button {
 
 .hide {
   display: none;
+}
+
+.old-texture {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+
+  object-fit: cover;
+  filter: brightness(0.8);
 }

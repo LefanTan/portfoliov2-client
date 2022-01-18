@@ -7,6 +7,8 @@ import photo2 from "../assets/backup_photo2.jpg";
 import { FaLinkedinIn, FaGithubAlt, FaRegFilePdf } from "react-icons/fa";
 import { DataContext } from "./services/data.provider";
 import ReactMarkdown from "react-markdown";
+import old_texture from "../assets/old_texture.jpg";
+
 const AboutSection = () => {
   const ref = useRef<HTMLElement>(null);
 
@@ -49,6 +51,7 @@ const AboutSection = () => {
 
   return (
     <section ref={ref} id="about" className={styles.section}>
+      <img src={old_texture} className="old-texture" alt="old texture" />
       <img src={dot} alt="dot background" className={styles.dot_background} />
       <div className={styles.picture_container}>
         <div className={styles.photo}>

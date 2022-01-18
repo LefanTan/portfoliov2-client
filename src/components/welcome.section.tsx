@@ -6,6 +6,7 @@ import nosie2 from "../assets/loading_anim.gif";
 import dot from "../assets/pattern.png";
 import { useContext, useState } from "react";
 import { DataContext } from "./services/data.provider";
+import old_texture from "../assets/old_texture.jpg";
 
 const WelcomeSection = () => {
   const [tvOn, setTvOn] = useState(false);
@@ -13,6 +14,7 @@ const WelcomeSection = () => {
 
   return (
     <section id="home" className={styles.section}>
+      <img src={old_texture} className="old-texture" alt="old texture" />
       <div className={styles.welcome_container}>
         <h1 className={styles.title}>WELCOME</h1>
         <p>

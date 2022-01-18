@@ -6,6 +6,7 @@ import { throttle } from "./helpers/lodash";
 import title from "../assets/title.png";
 import { HashLink } from "react-router-hash-link";
 import useMediaChange from "./helpers/useMediaChange";
+import old_texture from "../assets/old_texture.jpg";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -62,8 +63,6 @@ const Header = () => {
     }
   }, [blackAndWhite]);
 
-  console.log(menu);
-
   return (
     <>
       {mobile && (
@@ -79,6 +78,7 @@ const Header = () => {
           }}
         >
           <nav className={`${styles.side_nav}`}>
+            <img src={old_texture} className="old-texture" alt="old texture" />
             <ul>
               <button
                 className={styles.cancel_button}
@@ -125,6 +125,7 @@ const Header = () => {
         </CSSTransition>
       )}
       <header ref={ref} className={styles.header}>
+        <img src={old_texture} className="old-texture" alt="old pattern" />
         <button
           onClick={() => setBW(!blackAndWhite)}
           aria-label="switch"

@@ -52,10 +52,6 @@ nav ul {
   transform: rotateZ(180deg);
 }
 
-.light_switch_active {
-  transform: translateY(-50%);
-}
-
 .header > button:last-of-type {
   border: none;
   color: var(--red);
@@ -113,6 +109,7 @@ nav ul {
 }
 
 .title {
+  z-index: 10;
   top: 30px;
   position: relative;
 }

@@ -8,6 +8,7 @@
   padding: 2rem 5rem;
   align-content: center;
   flex-wrap: wrap;
+  position: relative;
 }
 
 /**
@@ -66,6 +67,7 @@
 
   text-decoration: none;
   font-size: 2rem;
+  font-family: 400;
   margin-top: 0.75rem;
   position: relative;
 }
@@ -128,6 +130,7 @@
 
   font-family: "Bellota Text", sans-serif;
   font-size: 1rem;
+  font-weight: 700;
 }
 
 .forms > textarea {
@@ -135,15 +138,14 @@
 }
 
 .forms > button[type="submit"] {
+  align-self: center;
   margin-top: 1rem;
   margin-left: auto;
-  background-color: transparent;
+  background-color: var(--grey);
+  padding: 0.25rem;
 
   cursor: pointer;
-  width: 80px;
-  height: 40px;
-
-  color: var(--grey);
+  color: var(--beige);
   font-family: "Market Deco", sans-serif;
   font-size: 2rem;
 
@@ -151,6 +153,7 @@
 }
 
 .forms > button[type="submit"]:hover {
+  filter: brightness(1.5);
 }
 
 @media (max-width: 800px) {
