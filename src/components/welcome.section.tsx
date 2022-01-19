@@ -34,12 +34,7 @@ const WelcomeSection = () => {
           aria-pressed={tvOn}
           className={tvOn ? styles.rotate : ""}
         />
-        <img
-          alt="tv"
-          onLoad={() => console.log("tv loaded")}
-          src={tv}
-          className={styles.tv}
-        />
+        <img alt="tv" src={tv} className={styles.tv} />
         <img
           alt="face"
           src={dataContext.profile?.mainMediaUrl ?? photo}

@@ -19,17 +19,15 @@ const AppRoutes = () => {
   const dataContext = useContext(DataContext);
 
   const onLoad = useCallback(() => {
-    setTimeout(() => {
-      document.fonts.ready.then(() => {
-        if ((dataContext.profile && dataContext.projects, dataContext.user)) {
-          const loader = document.querySelector(".loader");
-          loader?.classList.add("loader-hide");
+    document.fonts.ready.then(() => {
+      if ((dataContext.profile && dataContext.projects, dataContext.user)) {
+        const loader = document.querySelector(".loader");
+        loader?.classList.add("loader-hide");
 
-          const appBody = document.querySelector(".body");
-          appBody?.classList.remove("loader-hide");
-        }
-      });
-    }, 500);
+        const appBody = document.querySelector(".body");
+        appBody?.classList.remove("loader-hide");
+      }
+    });
   }, [dataContext.profile, dataContext.projects, dataContext.user]);
 
   useEffect(() => {
