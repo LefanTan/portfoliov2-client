@@ -26,7 +26,7 @@
 */
 
 .section .welcome_container {
-  max-width: 30rem;
+  width: 40%;
   z-index: 2;
 }
 
@@ -62,14 +62,16 @@
 }
 
 .title + p {
+  font-weight: bold;
   margin-top: 2rem;
+  font-size: 1.2rem;
   color: var(--beige);
 }
 
 .see_more {
   border: none;
   background-color: transparent;
-  width: 95%;
+  width: 80%;
   aspect-ratio: 3.6 / 1;
 
   margin-top: 2rem;
@@ -234,10 +236,20 @@
   .section {
     flex-wrap: wrap;
   }
+
+  .section > .welcome_container {
+    width: 100%;
+  }
+
   .title,
   .see_more {
     align-self: center;
   }
+
+  .see_more {
+    width: 100%;
+  }
+
   .section .tv_container {
     margin-top: -80px;
   }

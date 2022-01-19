@@ -70,11 +70,15 @@ button {
   position: absolute;
   top: 0px;
   left: 0px;
-  z-index: 5;
+  z-index: 10;
   width: 100%;
   height: 100%;
   opacity: 0.2;
 
   object-fit: cover;
   filter: brightness(0.8);
+}
+
+.flipX {
+  transform: scaleX(-1);
 }

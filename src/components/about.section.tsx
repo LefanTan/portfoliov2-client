@@ -1,18 +1,18 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./about.module.css";
-import dot from "../assets/pattern.png";
-import noise from "../assets/noise.png";
-import photo1 from "../assets/backup_photo1.jpg";
-import photo2 from "../assets/backup_photo2.jpg";
-import { FaLinkedinIn, FaGithubAlt, FaRegFilePdf } from "react-icons/fa";
 import { DataContext } from "./services/data.provider";
+import rotate_bg from "../assets/rotating.jpg";
 import ReactMarkdown from "react-markdown";
+import cutout from "../assets/cutout.png";
 import old_texture from "../assets/old_texture.jpg";
+import { CSSTransition } from "react-transition-group";
+import { CgArrowRight } from "react-icons/cg";
 
 const AboutSection = () => {
+  const dataContext = useContext(DataContext);
   const ref = useRef<HTMLElement>(null);
 
-  const dataContext = useContext(DataContext);
+  const [openMore, setOpen] = useState(false);
   const [tooLong, setIsTooLong] = useState(false);
   const [expand, setExpand] = useState(true);
   const [mainContent, setMainContent] = useState("");
@@ -24,6 +24,8 @@ const AboutSection = () => {
     const tooLong = ref.current?.clientWidth / ref.current?.clientHeight <= 1.5;
     setIsTooLong(tooLong && extraContent !== "");
     setExpand(!tooLong);
+
+    console.log(tooLong);
   }, [extraContent]);
 
   useEffect(() => {
@@ -45,75 +47,90 @@ const AboutSection = () => {
 
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);
+
     resizeHandler();
     return () => window.removeEventListener("resize", resizeHandler);
   }, [resizeHandler]);
 
   return (
     <section ref={ref} id="about" className={styles.section}>
-      <img src={old_texture} className="old-texture" alt="old texture" />
-      <img src={dot} alt="dot background" className={styles.dot_background} />
-      <div className={styles.picture_container}>
-        <div className={styles.photo}>
+      <img src={old_texture} className="old-texture flipX" alt="old texture" />
+      <CSSTransition
+        appear
+        in={!openMore}
+        unmountOnExit
+        timeout={200}
+        classNames={{
+          enter: styles.opacity_enter,
+          enterDone: styles.opacity_enter_active,
+          exit: styles.opacity_exit,
+          exitActive: styles.opacity_exit_active,
+        }}
+      >
+        <div className={styles.main_container}>
           <img
-            src={dataContext.profile?.mediaUrls?.at(0) ?? photo1}
-            alt="profile 1"
+            src={rotate_bg}
+            alt="rotating background"
+            className={styles.rotate_background}
           />
-          <img src={noise} alt="noise filter" />
-        </div>
-        <div className={styles.photo}>
-          <img
-            src={dataContext.profile?.mediaUrls?.at(1) ?? photo2}
-            alt="profile 2"
-          />
-          <img src={noise} alt="noise filter" />
-        </div>
-      </div>
-      <div className={styles.info_container}>
-        <h1 className={styles.title}>About Me</h1>
-        <ReactMarkdown>
-          {mainContent +
-            (tooLong && !expand ? "..." : "") +
-            (expand ? extraContent : "")}
-        </ReactMarkdown>
-        {tooLong && (
           <button
-            onClick={() => setExpand(!expand)}
-            className={styles.read_more}
+            className={styles.cutout_button}
+            onClick={() => setOpen(true)}
           >
-            {expand ? "Read less >" : "Read more >"}
+            <img
+              src={dataContext.profile?.mediaUrls?.at(0) || cutout}
+              alt="lefan's cool cutout"
+            />
           </button>
-        )}
-        <div className={styles.links_container}>
-          <a
-            href={dataContext.profile?.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaLinkedinIn size={30} />
-          </a>
-          <a
-            href={dataContext.profile?.github}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithubAlt size={30} />
-          </a>
-          <a
-            href={dataContext.profile?.resumeUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaRegFilePdf size={30} />
-          </a>
         </div>
-        <h2 className={styles.skills}>Skills</h2>
-        <div className={styles.skills_container}>
-          {dataContext.profile?.skills?.map((skill) => (
-            <h3 key={skill}>{skill}</h3>
-          ))}
+      </CSSTransition>
+      <CSSTransition
+        appear
+        in={openMore}
+        unmountOnExit
+        timeout={400}
+        classNames={{
+          enter: styles.opacity_enter,
+          enterDone: styles.opacity_enter_active,
+          exit: styles.opacity_exit,
+          exitActive: styles.opacity_exit_active,
+        }}
+      >
+        <div className={styles.news_container}>
+          <div className={styles.line_top} />
+          <div className={styles.line_right} />
+          <div className={styles.line_bottom} />
+          <div className={styles.line_left} />
+
+          <div className={styles.left_article}>
+            <h1>ABOUT ME</h1>
+            <span className={styles.paragraph}>
+              <img src={dataContext.profile?.mediaUrls?.at(1)} alt="profile" />
+              <ReactMarkdown>
+                {mainContent +
+                  (tooLong && !expand ? "..." : "") +
+                  (expand ? extraContent : "")}
+              </ReactMarkdown>
+              {tooLong && (
+                <button
+                  onClick={() => setExpand(!expand)}
+                  className={styles.read_more}
+                >
+                  {expand ? "Read less >" : "Read more >"}
+                </button>
+              )}
+            </span>
+          </div>
+          <div className={styles.right_article}>
+            <h2>SKILLS</h2>
+            <p>{dataContext.profile?.skills?.join(", ")}</p>
+            <img src={dataContext.profile?.mediaUrls?.at(2)} alt="profile 2" />
+            <button onClick={() => setOpen(false)}>
+              EXIT <CgArrowRight size={35} />
+            </button>
+          </div>
         </div>
-      </div>
+      </CSSTransition>
     </section>
   );
 };
