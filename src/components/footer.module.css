@@ -1,0 +1,38 @@
+.footer {
+  min-height: 10rem;
+  background-color: var(--red);
+  background-image: url("../assets/paper.png");
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.footer * {
+  color: var(--beige);
+}
+
+.footer > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer > div > a {
+  padding: 0rem 1rem;
+  transition: 200ms;
+}
+
+.footer > div > a:hover {
+  filter: brightness(0.8);
+}
+
+.footer > p {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}

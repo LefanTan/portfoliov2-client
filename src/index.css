@@ -1,11 +1,13 @@
 @font-face {
   font-family: "Franky";
   src: local("Franky"), url("./fonts/franky.otf") format("opentype");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Market Deco";
   src: local("Market Deco"), url("./fonts/market-deco.ttf") format("truetype");
+  font-display: swap;
 }
 
 :root {
@@ -15,8 +17,6 @@
   --red: #da5c46;
   --dark-grey: rgb(0, 0, 0);
   --grey: #454545;
-  --dark-purple: #221c50;
-  --light-blue: #2fb3b9;
   --blue: #53acb1;
   --dirty-blue: #37a1a7;
   --shadow: rgba(49, 49, 49, 0.397);
@@ -70,7 +70,7 @@ button {
   position: absolute;
   top: 0px;
   left: 0px;
-  z-index: 10;
+  z-index: 5;
   width: 100%;
   height: 100%;
   opacity: 0.2;

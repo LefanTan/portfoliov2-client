@@ -1,5 +1,13 @@
-import React, { Suspense, useContext, useEffect, useRef } from "react";
+import React, {
+  Suspense,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from "./components/footer";
+import Header from "./components/header";
 import { DataContext } from "./components/services/data.provider";
 
 const App = React.lazy(() => import("./App"));
@@ -10,10 +18,7 @@ const ProjectDetailsPage = React.lazy(
 const AppRoutes = () => {
   const dataContext = useContext(DataContext);
 
-  useEffect(() => {
-    // DOM is attached, now check if API has been called successfully
-    // and that all images and fonts are loaded
-    // For now just use a timeout
+  const onLoad = useCallback(() => {
     setTimeout(() => {
       document.fonts.ready.then(() => {
         if ((dataContext.profile && dataContext.projects, dataContext.user)) {
@@ -24,8 +29,16 @@ const AppRoutes = () => {
           appBody?.classList.remove("loader-hide");
         }
       });
-    }, 0);
+    }, 500);
   }, [dataContext.profile, dataContext.projects, dataContext.user]);
+
+  useEffect(() => {
+    // DOM is attached, now check if API has been called successfully
+    // and that all images and fonts are loaded
+    window.addEventListener("load", onLoad);
+
+    return () => window.removeEventListener("load", onLoad);
+  }, [onLoad]);
 
   /**
    * Loading screen for suspense' fallback,
@@ -45,8 +58,9 @@ const AppRoutes = () => {
   };
 
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="body">
+        <Header />
         <Routes>
           <Route
             path="/"
@@ -65,8 +79,9 @@ const AppRoutes = () => {
             }
           />
         </Routes>
-      </BrowserRouter>
-    </>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 };
 

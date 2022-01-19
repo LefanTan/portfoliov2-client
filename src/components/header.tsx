@@ -1,11 +1,11 @@
 import styles from "./header.module.css";
 import { CgMenuGridO, CgArrowRight } from "react-icons/cg";
 import { CSSTransition } from "react-transition-group";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { throttle } from "./helpers/lodash";
-import title from "../assets/title.png";
 import { HashLink } from "react-router-hash-link";
 import useMediaChange from "./helpers/useMediaChange";
+import title from "../assets/title.png";
 import old_texture from "../assets/old_texture.jpg";
 
 const Header = () => {
@@ -17,6 +17,9 @@ const Header = () => {
   let prevScrollY = 0;
   let totalScrolledUp = 0;
 
+  /**
+   * Check if scrolled down/up to hide headers
+   */
   const onScroll = throttle((event: Event) => {
     let clientHeight = ref.current?.clientHeight;
 
@@ -44,13 +47,13 @@ const Header = () => {
     prevScrollY = window.scrollY;
   }, 50);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     // Apparently changing document.body.style messes all the css up
 
     const main = document.querySelector("main");
@@ -125,7 +128,12 @@ const Header = () => {
         </CSSTransition>
       )}
       <header ref={ref} className={styles.header}>
-        <img src={old_texture} className="old-texture" alt="old pattern" />
+        <img
+          src={old_texture}
+          className="old-texture"
+          alt="old pattern"
+          style={{ zIndex: 8, opacity: 0.2 }}
+        />
         <button
           onClick={() => setBW(!blackAndWhite)}
           aria-label="switch"

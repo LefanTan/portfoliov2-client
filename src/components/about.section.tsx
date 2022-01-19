@@ -24,8 +24,6 @@ const AboutSection = () => {
     const tooLong = ref.current?.clientWidth / ref.current?.clientHeight <= 1.5;
     setIsTooLong(tooLong && extraContent !== "");
     setExpand(!tooLong);
-
-    console.log(tooLong);
   }, [extraContent]);
 
   useEffect(() => {

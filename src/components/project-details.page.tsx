@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "./header";
 import styles from "./project-details.module.css";
 import { DataContext, ProjectData } from "./services/data.provider";
 
@@ -20,12 +19,9 @@ const ProjectDetailsPage = () => {
   }, [params, dataContext.projects]);
 
   return (
-    <div className="body">
-      <Header />
-      <main>
-        <h1 className={styles.title}>TEst</h1>
-      </main>
-    </div>
+    <main>
+      <h1 className={styles.title}>TEst</h1>
+    </main>
   );
 };
 

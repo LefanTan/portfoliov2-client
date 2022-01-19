@@ -39,6 +39,7 @@ const ContactSection = () => {
           <a
             href={dataContext.profile?.linkedin}
             className={styles.link}
+            aria-label="linkedin"
             target="_blank"
             rel="noreferrer"
           >
@@ -48,6 +49,7 @@ const ContactSection = () => {
           <a
             href={dataContext.profile?.github}
             className={styles.link}
+            aria-label="github"
             target="_blank"
             rel="noreferrer"
           >
@@ -56,6 +58,7 @@ const ContactSection = () => {
           <a
             href={dataContext.profile?.resumeUrl}
             className={styles.link}
+            aria-label="resume"
             target="_blank"
             rel="noreferrer"
           >

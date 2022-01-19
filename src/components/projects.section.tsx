@@ -69,6 +69,7 @@ const ProjectsSection = () => {
           .match(/\w+/g)
           ?.join("-")
           .toLocaleLowerCase()}`}
+        aria-label={project.title}
       />
     </div>
   );
