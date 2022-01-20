@@ -14,7 +14,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <img src={old_texture} className="old-texture" alt="old texture" />
+      <img src={old_texture} className="old-texture " alt="old texture" />
       <div>
         <a
           href={dataContext.profile?.github}
@@ -50,7 +50,7 @@ const Footer = () => {
         </a>
       </div>
 
-      <p>MADE BY JIAHUI (LEFAN) TAN</p>
+      <p>JIAHUI (LEFAN) TAN © 2021</p>
     </footer>
   );
 };

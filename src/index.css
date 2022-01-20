@@ -15,7 +15,7 @@
   --horizontal-padding: 2rem;
   --beige: #e4ddd4;
   --red: #da5c46;
-  --dark-grey: rgb(0, 0, 0);
+  --dark-grey: rgb(29, 29, 29);
   --grey: #454545;
   --blue: #53acb1;
   --dirty-blue: #37a1a7;
@@ -23,8 +23,9 @@
 }
 
 .body {
-  font-family: "Bellota Text", cursive;
-  font-weight: "400";
+  font-family: "Abhaya Libre", serif;
+  font-weight: 400;
+  position: relative;
 }
 
 main {
@@ -50,13 +51,14 @@ h2 {
 }
 
 p {
-  font-family: "Bellota Text", serif;
+  font-family: "Abhaya Libre", serif;
   font-size: 1.1rem;
 }
 
 button {
   border: none;
-  font-family: "Bellota Text", serif;
+
+  font-family: "Abhaya Libre", serif;
   font-size: 1.1rem;
   cursor: pointer;
 }
@@ -76,9 +78,12 @@ button {
   opacity: 0.2;
 
   object-fit: cover;
-  filter: brightness(0.8);
 }
 
 .flipX {
   transform: scaleX(-1);
+}
+
+.flipY {
+  transform: scaleY(-1);
 }

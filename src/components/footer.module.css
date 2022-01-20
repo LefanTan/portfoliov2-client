@@ -1,7 +1,6 @@
 .footer {
-  min-height: 10rem;
-  background-color: var(--red);
-  background-image: url("../assets/paper.png");
+  min-height: 8rem;
+  background-color: var(--dark-grey);
 
   position: relative;
   display: flex;
@@ -28,11 +27,11 @@
 }
 
 .footer > div > a:hover {
-  filter: brightness(0.8);
+  transform: scale(1.1);
 }
 
 .footer > p {
+  font-family: "Market Deco", sans-serif;
   margin-top: 0.5rem;
-  font-weight: bold;
   letter-spacing: 1px;
 }

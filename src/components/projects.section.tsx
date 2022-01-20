@@ -1,14 +1,5 @@
 import styles from "./projects.module.css";
-import title from "../assets/projects_title.png";
-import board from "../assets/board.png";
-import {
-  useCallback,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { DataContext, ProjectData } from "./services/data.provider";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
@@ -23,6 +14,7 @@ const ProjectsSection = () => {
 
   const checkIfProjectsOverflow = useCallback(() => {
     setProjects(dataContext.projects);
+    setExtraProjects(undefined);
 
     if (!projectsGrid.current) {
       return;
@@ -46,33 +38,42 @@ const ProjectsSection = () => {
 
   useEffect(() => {
     window.addEventListener("resize", checkIfProjectsOverflow);
-
+    checkIfProjectsOverflow();
     return () => window.removeEventListener("resize", checkIfProjectsOverflow);
   }, [checkIfProjectsOverflow]);
 
-  useLayoutEffect(() => {
-    setTimeout(() => {
-      checkIfProjectsOverflow();
-    }, 200);
-  }, [checkIfProjectsOverflow]);
+  const Project = (project: ProjectData) => {
+    const [hover, setHover] = useState(false);
 
-  const Project = (project: ProjectData) => (
-    <div className={styles.project_container}>
-      <img src={project.mainMediaUrl} alt={`${project.title} demo`} />
-      <div className={styles.spread_row}>
-        <img src={board} alt="board background" />
-        <h2>{project.title.toLocaleUpperCase()}</h2>
-        <ReactMarkdown>{project.shortDescription}</ReactMarkdown>
+    return (
+      <div className={styles.project_container}>
+        <Link
+          to={`/project/${project.title
+            .match(/\w+/g)
+            ?.join("-")
+            .toLocaleLowerCase()}`}
+          aria-label={project.title}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className={styles.image_button}
+        >
+          {hover && <h2>SEE MORE</h2>}
+          <img src={project.mainMediaUrl} alt={`${project.title} demo`} />
+        </Link>
+        <div className={styles.spread_row}>
+          <h2>{project.title.toLocaleUpperCase()}</h2>
+          <ReactMarkdown>{project.shortDescription}</ReactMarkdown>
+        </div>
+        <Link
+          to={`/project/${project.title
+            .match(/\w+/g)
+            ?.join("-")
+            .toLocaleLowerCase()}`}
+          aria-label={project.title}
+        />
       </div>
-      <Link
-        to={`/project/${project.title
-          .match(/\w+/g)
-          ?.join("-")
-          .toLocaleLowerCase()}`}
-        aria-label={project.title}
-      />
-    </div>
-  );
+    );
+  };
 
   return (
     <section id="projects" className={styles.section}>
@@ -80,9 +81,9 @@ const ProjectsSection = () => {
         src={old_texture}
         className="old-texture"
         alt="old texture"
-        style={{ opacity: 0.2 }}
+        style={{ opacity: 0.15 }}
       />
-      <img src={title} alt="Project Title" className={styles.title} />
+      <h1 className={styles.title}>PROJECTS</h1>
       <div ref={projectsGrid}>
         {projects?.map((project) => (
           <Project key={project.id} {...project} />
@@ -97,7 +98,7 @@ const ProjectsSection = () => {
           onClick={() => setShowMore(!showMore)}
           className={styles.show_more_button}
         >
-          {showMore ? "Show less" : "Show more"}
+          {showMore ? "SHOW LESS" : "SHOW MORE"}
         </button>
       )}
     </section>

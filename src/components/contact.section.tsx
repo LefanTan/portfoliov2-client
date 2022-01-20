@@ -1,5 +1,6 @@
 import { FormEvent, useContext, useRef } from "react";
 import styles from "./contact.module.css";
+import letter from "../assets/letter.png";
 import { FaLinkedinIn, FaGithubAlt, FaRegFilePdf } from "react-icons/fa";
 import { DataContext } from "./services/data.provider";
 import emailjs from "@emailjs/browser";
@@ -68,6 +69,7 @@ const ContactSection = () => {
         </div>
       </div>
       <form ref={form} onSubmit={onSubmit} className={styles.forms}>
+        <img src={letter} alt="letter" />
         <label htmlFor="name">Name</label>
         <input type="text" name="name" id="name" required />
 
@@ -77,7 +79,9 @@ const ContactSection = () => {
         <label htmlFor="content">Content</label>
         <textarea name="message" id="content" required />
 
-        <button type="submit">Send</button>
+        <button type="submit" className={styles.submit}>
+          SEND
+        </button>
       </form>
     </section>
   );

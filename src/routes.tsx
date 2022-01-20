@@ -8,6 +8,7 @@ import React, {
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer";
 import Header from "./components/header";
+import old_texture from "./assets/old_texture.jpg";
 import { DataContext } from "./components/services/data.provider";
 
 const App = React.lazy(() => import("./App"));

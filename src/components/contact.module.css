@@ -1,7 +1,6 @@
 .section {
   min-height: 70vh;
   background-color: var(--beige);
-  background-image: url("../assets/paper.png");
   background-size: cover;
 
   display: flex;
@@ -66,8 +65,8 @@
   align-items: flex-end;
 
   text-decoration: none;
+
   font-size: 2rem;
-  font-family: 400;
   margin-top: 0.75rem;
   position: relative;
 }
@@ -106,6 +105,7 @@
 
   display: block;
   color: var(--beige);
+  position: relative;
 }
 
 .forms > * {
@@ -113,8 +113,17 @@
   width: 100%;
 }
 
+.forms > img {
+  pointer-events: none;
+  position: absolute;
+  top: -2.5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+}
+
 .forms > label {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.5rem;
   margin-top: 1rem;
   color: var(--grey);
@@ -123,41 +132,55 @@
 .forms textarea,
 .forms input[type="text"],
 .forms input[type="email"] {
-  background-color: rgb(202, 197, 185);
+  background-color: rgb(218, 212, 200);
   border: none;
   padding: 0.5rem 0.75rem;
   resize: vertical;
 
-  font-family: "Bellota Text", sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
+  font-family: "Abhaya Libre", serif;
+  font-size: 1.25rem;
 }
 
 .forms > textarea {
   min-height: 10rem;
 }
 
-.forms > button[type="submit"] {
+.submit {
   align-self: center;
   margin-top: 1rem;
   margin-left: auto;
+  background-color: transparent;
 
-  background-color: var(--grey);
-  padding: 0.25rem;
-
+  width: fit-content;
   cursor: pointer;
-  color: var(--beige);
-  font-family: "Market Deco", sans-serif;
+  color: var(--grey);
+  font-family: "Abril Fatface", sans-serif;
   font-size: 2rem;
 
   transition: 200ms;
+  position: relative;
 }
 
-.forms > button[type="submit"]:hover {
-  filter: brightness(1.5);
+.submit::after {
+  position: absolute;
+  content: "";
+
+  bottom: 0px;
+  left: 0px;
+
+  height: 2px;
+  width: 100%;
+  background-color: var(--grey);
+
+  opacity: 0;
+  transition: 200ms;
 }
 
-@media (max-width: 800px) {
+.submit:hover:after {
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
   .section {
     justify-content: center;
     align-items: flex-start;
@@ -181,5 +204,9 @@
   }
   .link > *:first-child {
     margin-right: 0rem;
+  }
+
+  .forms > img {
+    opacity: 0;
   }
 }
