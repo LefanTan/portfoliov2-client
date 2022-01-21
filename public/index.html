@@ -51,7 +51,7 @@
       }
 
       .loader {
-        position: absolute;
+        position: fixed;
         top: 0px;
         left: 0px;
 
@@ -113,7 +113,17 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <div class="loader">
-      <div><img src="./loading_anim.gif" /><img src="./loading_tv.png" /></div>
+      <div>
+        <img
+          data-image-type="loading-anim"
+          src="%PUBLIC_URL%/loading_anim.gif"
+          alt="tv loading"
+        /><img
+          data-image-type="loading-tv"
+          src="%PUBLIC_URL%/loading_tv.png"
+          alt="tv frame"
+        />
+      </div>
     </div>
   </body>
 </html>

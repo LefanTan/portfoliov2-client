@@ -1,0 +1,23 @@
+.main {
+  min-height: 200vh;
+  padding: 0rem var(--horizontal-padding);
+  padding-top: var(--header-height);
+
+  overflow: hidden;
+}
+
+.old_texture {
+  composes: old-texture from "../index.css";
+  height: 100vh;
+}
+
+.old_texture_2 {
+  composes: old-texture from "../index.css";
+  top: 100vh;
+  height: 100vh;
+}
+
+.heading {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: max(6vmax, 4rem);
+}

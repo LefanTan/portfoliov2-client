@@ -3,13 +3,13 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useRef,
 } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer";
 import Header from "./components/header";
-import old_texture from "./assets/old_texture.jpg";
-import { DataContext } from "./components/services/data.provider";
+import onToggleLoader from "./components/helpers/onToggleLoader";
 
 const App = React.lazy(() => import("./App"));
 const ProjectDetailsPage = React.lazy(
@@ -17,19 +17,8 @@ const ProjectDetailsPage = React.lazy(
 );
 
 const AppRoutes = () => {
-  const dataContext = useContext(DataContext);
-
-  const onLoad = useCallback(() => {
-    document.fonts.ready.then(() => {
-      if ((dataContext.profile && dataContext.projects, dataContext.user)) {
-        const loader = document.querySelector(".loader");
-        loader?.classList.add("loader-hide");
-
-        const appBody = document.querySelector(".body");
-        appBody?.classList.remove("loader-hide");
-      }
-    });
-  }, [dataContext.profile, dataContext.projects, dataContext.user]);
+  // On DOM initial load, hide loader
+  const onLoad = useCallback(() => onToggleLoader(false), []);
 
   useEffect(() => {
     // DOM is attached, now check if API has been called successfully
@@ -39,25 +28,17 @@ const AppRoutes = () => {
     return () => window.removeEventListener("load", onLoad);
   }, [onLoad]);
 
-  /**
-   * Loading screen for suspense' fallback,
-   * Works by making a copy of the already existing loading screen
-   */
   const Loading = () => {
-    const emptyDivRef = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
-      const loadingScreen = document.querySelector(".loader");
-      const cpLoadingScreen = loadingScreen?.cloneNode(true) as Element;
-
-      emptyDivRef.current?.append(cpLoadingScreen);
+      // Reenable loading screen
+      onToggleLoader(true);
     }, []);
 
-    return <div ref={emptyDivRef}></div>;
+    return <div></div>;
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <div className="body">
         <Header />
         <Routes>
