@@ -1,7 +1,7 @@
 import styles from "./header.module.css";
 import { CgMenuGridO, CgArrowRight } from "react-icons/cg";
 import { CSSTransition } from "react-transition-group";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { throttle } from "./helpers/lodash";
 import { HashLink } from "react-router-hash-link";
 import useMediaChange from "./helpers/useMediaChange";
@@ -54,15 +54,13 @@ const Header = () => {
   }, [onScroll]);
 
   useEffect(() => {
-    // Apparently changing document.body.style messes all the css up
-
-    const main = document.querySelector("main");
-    const val = `grayscale(${blackAndWhite ? 2 : 0}) contrast(${
-      blackAndWhite ? 1.1 : 1
-    })`;
-    if (main && ref.current) {
-      main.style.filter = val;
-      ref.current!.style.filter = val;
+    const html = document.querySelector("html");
+    if (html) {
+      if (blackAndWhite && !html.classList.contains(".black-and-white")) {
+        html.classList.add("black-and-white");
+      } else {
+        html.classList.remove("black-and-white");
+      }
     }
   }, [blackAndWhite]);
 
@@ -82,12 +80,8 @@ const Header = () => {
         >
           <nav className={`${styles.side_nav}`}>
             <img src={old_texture} className="old-texture" alt="old texture" />
-            <ul>
-              <button
-                className={styles.cancel_button}
-                aria-label="hide menu"
-                onClick={() => setMenu(false)}
-              >
+            <ul onClick={() => setMenu(false)}>
+              <button className={styles.cancel_button} aria-label="hide menu">
                 <CgArrowRight size={40} />
               </button>
               <li>

@@ -104,8 +104,11 @@ const AboutSection = () => {
             <h1>ABOUT ME</h1>
             <span className={styles.paragraph}>
               <img src={dataContext.profile?.mediaUrls?.at(1)} alt="profile" />
+              <ReactMarkdown components={{ p: "h1" }}>
+                {mainContent[0]}
+              </ReactMarkdown>
               <ReactMarkdown>
-                {mainContent +
+                {mainContent.slice(1) +
                   (tooLong && !expand ? "..." : "") +
                   (expand ? extraContent : "")}
               </ReactMarkdown>

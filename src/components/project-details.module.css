@@ -1,23 +1,363 @@
 .main {
-  min-height: 200vh;
-  padding: 0rem var(--horizontal-padding);
-  padding-top: var(--header-height);
+  min-height: 100vh;
+  padding: calc(var(--header-height) + 2rem) 10vw;
+  background-color: var(--beige);
 
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main h3 {
+  font-family: "Abhaya Libre", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.main h2 {
+  font-family: "Abhaya Libre", sans-serif;
+  font-weight: bold;
+  font-size: max(3.5vmax, 2.25rem);
+  margin-bottom: 1rem;
+}
+
+.main p {
+  font-size: 1.5rem;
+}
+
+.main span {
+  margin-top: 1rem;
+}
+
+.main img:not(.old_texture) {
+  filter: grayscale(0.4) contrast(0.9);
+}
+
+.main ol,
+.main ul {
+  margin-top: 1rem;
+}
+
+.main li {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-left: 1rem;
 }
 
 .old_texture {
   composes: old-texture from "../index.css";
+  top: 0px;
+  position: fixed;
+  width: 100vw;
   height: 100vh;
+  opacity: 0.25;
+  object-fit: cover;
 }
 
-.old_texture_2 {
-  composes: old-texture from "../index.css";
-  top: 100vh;
-  height: 100vh;
+.row,
+.row_space_between {
+  display: flex;
+  align-items: center;
+}
+
+.row_space_between {
+  justify-content: space-between;
 }
 
 .heading {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: max(6vmax, 4rem);
+  text-align: center;
+}
+
+.main .title {
+  margin-top: 1rem;
+  font-size: 7vmax;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: var(--dark-grey);
+}
+
+.line_box {
+  margin: 0.75rem 0rem;
+}
+
+.description > p {
+  display: inline;
+}
+
+.description > h1 {
+  display: inline-block;
+  font-family: "Abhaya Libre", sans-serif;
+  font-weight: bold;
+  font-size: 3.5rem;
+}
+
+.description > img {
+  width: 50%;
+  min-width: 15rem;
+  max-width: 40rem;
+  max-height: 25rem;
+
+  object-fit: cover;
+  float: left;
+  margin-right: 1rem;
+}
+
+.stack_goals_container {
+  height: fit-content;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.stack_goals_container > * {
+  height: 100%;
+}
+
+.stack_links_container {
+  width: 45%;
+  min-width: 15rem;
+
+  padding: 2rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.stack_links_container > h2 {
+  text-align: center;
+  position: relative;
+}
+
+.stack_links_container > h2:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--dark-grey);
+}
+
+.stack_links_container > p {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.stack_links_container > a {
+  text-decoration: none;
+  font-family: "Abril Fatface", serif;
+  font-size: 2rem;
+  text-align: center;
+
+  width: 100%;
+  margin-bottom: 1rem;
+
+  border: 2px solid var(--dark-grey);
+  color: var(--dark-grey);
+  transition: 200ms;
+}
+
+.stack_links_container > a:hover {
+  background-color: var(--dark-grey);
+  color: var(--beige);
+}
+
+.stack_links_container > img {
+  width: 100%;
+  max-height: 50rem;
+  object-fit: contain;
+}
+
+.right_side {
+  padding: 2rem 3rem;
+  flex: 1;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.container > h2 {
+  display: inline-block;
+  background-color: var(--dark-grey);
+  color: var(--beige);
+
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+  padding: 0rem 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.container img {
+  min-width: 10rem;
+  max-height: 30rem;
+  max-width: 50%;
+  object-fit: contain;
+  float: left;
+  margin-right: 1rem;
+}
+
+.lessons_container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  border: 3px solid var(--dark-grey);
+  padding: 1.5rem;
+}
+
+.lessons_container > h2 {
+  text-align: center;
+  align-self: center;
+  position: relative;
+}
+
+.lessons_container > h2:after {
+  position: absolute;
+  content: "";
+  display: block;
+
+  bottom: 5px;
+  width: 100%;
+  height: 3px;
+  background-color: var(--dark-grey);
+}
+
+.gallery > h3 {
+  margin-top: 2rem;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+
+  font-size: max(3vmax, 2rem);
+  width: fit-content;
+  color: var(--beige);
+
+  padding: 2.5rem;
+  background-image: url("../assets/spiky.png");
+  background-size: 100% 100%;
+}
+
+.gallery_images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery_images > button {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  background-color: transparent;
+  height: max(20vw, 15rem);
+}
+
+.gallery_images > button:hover {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  background-color: transparent;
+  height: max(20vw, 15rem);
+}
+
+.gallery_images img {
+  height: 100%;
+  object-fit: contain;
+  border: 3px solid var(--beige);
+}
+
+.image_button {
+  position: relative;
+}
+
+.image_button > h2 {
+  width: 100%;
+
+  pointer-events: none;
+  color: var(--beige);
+  font-weight: bold;
+
+  font-size: 2vw;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image_button > img:hover {
+  transition: 200ms;
+  filter: brightness(0.2);
+}
+
+.modal_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  position: relative;
+}
+
+.modal_content > button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  background-color: transparent;
+  color: var(--dark-grey);
+}
+
+.modal_content > img {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 1100px) {
+  .main p {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .heading {
+    font-size: 10vw;
+  }
+
+  .main .title {
+    font-size: 10vw;
+  }
+
+  .stack_goals_container {
+    padding: 0rem;
+    padding-top: 2rem;
+  }
+
+  .description > h1 {
+    font-size: 2rem;
+  }
+
+  .stack_links_container {
+    width: 100%;
+    padding: 0rem;
+  }
+
+  .right_side {
+    margin-top: 2rem;
+    padding: 0;
+  }
+
+  .right_side:after {
+    width: 0;
+  }
 }

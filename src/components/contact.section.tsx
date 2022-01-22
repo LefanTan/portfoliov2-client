@@ -36,7 +36,7 @@ const ContactSection = () => {
       <img src={old_texture} className="old-texture" alt="old texture" />
       <div className={styles.links_container}>
         <h1 className={styles.title}>Let's Talk</h1>
-        <div>
+        <address>
           <a
             href={dataContext.profile?.linkedin}
             className={styles.link}
@@ -66,7 +66,7 @@ const ContactSection = () => {
             <FaRegFilePdf size={`2.5rem`} style={{ marginBottom: "5px" }} />
             {mobile ? "" : "Resume"}
           </a>
-        </div>
+        </address>
       </div>
       <form ref={form} onSubmit={onSubmit} className={styles.forms}>
         <img src={letter} alt="letter" />

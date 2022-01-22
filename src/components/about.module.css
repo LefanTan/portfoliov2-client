@@ -139,6 +139,14 @@
 .paragraph p {
   font-family: "Abhaya Libre", serif;
   font-size: 1.2rem;
+  display: inline;
+}
+
+.paragraph h1 {
+  display: inline-block;
+  font-family: "Abhaya Libre", sans-serif;
+  font-weight: bold;
+  font-size: 3.5rem;
 }
 
 .paragraph > img {

@@ -32,11 +32,9 @@
 main {
   width: 100%;
   background-color: var(--beige);
-  background-image: url("./assets/paper.png");
-  background-size: cover;
 }
 
-.black_and_white {
+.black-and-white {
   filter: grayscale(1);
 }
 

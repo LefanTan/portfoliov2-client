@@ -64,13 +64,6 @@ const ProjectsSection = () => {
           <h2>{project.title.toLocaleUpperCase()}</h2>
           <ReactMarkdown>{project.shortDescription}</ReactMarkdown>
         </div>
-        <Link
-          to={`/project/${project.title
-            .match(/\w+/g)
-            ?.join("-")
-            .toLocaleLowerCase()}`}
-          aria-label={project.title}
-        />
       </div>
     );
   };

@@ -1,11 +1,4 @@
-import React, {
-  Suspense,
-  useCallback,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-} from "react";
+import React, { Suspense, useCallback, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer";
 import Header from "./components/header";
@@ -34,7 +27,7 @@ const AppRoutes = () => {
       onToggleLoader(true);
     }, []);
 
-    return <div></div>;
+    return <></>;
   };
 
   return (
