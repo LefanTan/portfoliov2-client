@@ -1,0 +1,26 @@
+.main {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: var(--dirty-blue);
+}
+
+.main > h1 {
+  color: white;
+  font-size: 3rem;
+  text-shadow: 4px 4px var(--shadow);
+  text-align: center;
+}
+
+.main > p {
+  color: var(--beige);
+  font-size: 1.4rem;
+
+  margin-top: 1rem;
+  text-align: center;
+}

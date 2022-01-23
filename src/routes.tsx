@@ -1,8 +1,8 @@
-import React, { Suspense, useCallback, useEffect } from "react";
+import React, { Suspense, useCallback, useContext, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./components/footer";
-import Header from "./components/header";
+import ErrorPage from "./components/error.page";
 import onToggleLoader from "./components/helpers/onToggleLoader";
+import { DataContext } from "./components/services/data.provider";
 
 const App = React.lazy(() => import("./App"));
 const ProjectDetailsPage = React.lazy(
@@ -10,8 +10,12 @@ const ProjectDetailsPage = React.lazy(
 );
 
 const AppRoutes = () => {
+  const dataContext = useContext(DataContext);
+
   // On DOM initial load, hide loader
-  const onLoad = useCallback(() => onToggleLoader(false), []);
+  const onLoad = useCallback(() => {
+    if (dataContext.projects) onToggleLoader(false);
+  }, [dataContext]);
 
   useEffect(() => {
     // DOM is attached, now check if API has been called successfully
@@ -30,30 +34,50 @@ const AppRoutes = () => {
     return <></>;
   };
 
+  useEffect(() => {
+    if (dataContext.user) onToggleLoader(false);
+  }, [dataContext]);
+
   return (
-    <BrowserRouter basename="/">
-      <div className="body">
-        <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<Loading />}>
-                <App />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/project/:name"
-            element={
-              <Suspense fallback={<Loading />}>
-                <ProjectDetailsPage />
-              </Suspense>
-            }
-          />
-        </Routes>
-        <Footer />
-      </div>
+    <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
+      <Routes>
+        <Route
+          path="*"
+          element={
+            <ErrorPage
+              errorCode="404"
+              header="Page Doesn't Exist"
+              description="Please leave this page immediately"
+            />
+          }
+        />
+        <Route
+          path="/404"
+          element={
+            <ErrorPage
+              errorCode="404"
+              header="Page Doesn't Exist"
+              description="Please leave this page immediately"
+            />
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<Loading />}>
+              <App />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/project/:name"
+          element={
+            <Suspense fallback={<Loading />}>
+              <ProjectDetailsPage />
+            </Suspense>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 };

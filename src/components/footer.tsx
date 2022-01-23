@@ -8,7 +8,6 @@ import {
 } from "react-icons/fa";
 import { useContext } from "react";
 import { DataContext } from "./services/data.provider";
-import { useLocation } from "react-router-dom";
 
 interface FooterProps {
   disableTexture?: boolean;
@@ -24,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({ disableTexture }) => {
 
   return (
     <footer className={styles.footer}>
-      {!useLocation().pathname.includes("/project/") && (
+      {!disableTexture && (
         <img src={old_texture} className="old-texture " alt="old texture" />
       )}
       <div>
