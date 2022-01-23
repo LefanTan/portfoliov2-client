@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.8da4227c.css",
-    "main.js": "/static/js/main.605cd3d5.js",
+    "main.js": "/static/js/main.fa7606da.js",
     "static/css/534.dd14c6d1.chunk.css": "/static/css/534.dd14c6d1.chunk.css",
     "static/js/534.b453bc60.chunk.js": "/static/js/534.b453bc60.chunk.js",
     "static/css/784.1a2f6e04.chunk.css": "/static/css/784.1a2f6e04.chunk.css",
@@ -27,7 +27,7 @@
     "static/media/tv_switch.png": "/static/media/tv_switch.243853841305ab487ebe.png",
     "index.html": "/index.html",
     "main.8da4227c.css.map": "/static/css/main.8da4227c.css.map",
-    "main.605cd3d5.js.map": "/static/js/main.605cd3d5.js.map",
+    "main.fa7606da.js.map": "/static/js/main.fa7606da.js.map",
     "534.dd14c6d1.chunk.css.map": "/static/css/534.dd14c6d1.chunk.css.map",
     "534.b453bc60.chunk.js.map": "/static/js/534.b453bc60.chunk.js.map",
     "784.1a2f6e04.chunk.css.map": "/static/css/784.1a2f6e04.chunk.css.map",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.8da4227c.css",
-    "static/js/main.605cd3d5.js"
+    "static/js/main.fa7606da.js"
   ]
 }
