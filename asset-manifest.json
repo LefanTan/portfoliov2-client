@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/portfoliov2-client/static/css/main.1b306426.css",
-    "main.js": "/portfoliov2-client/static/js/main.08efcd62.js",
+    "main.js": "/portfoliov2-client/static/js/main.1526f306.js",
     "static/css/534.4ff13f7f.chunk.css": "/portfoliov2-client/static/css/534.4ff13f7f.chunk.css",
     "static/js/534.b453bc60.chunk.js": "/portfoliov2-client/static/js/534.b453bc60.chunk.js",
     "static/css/784.3c98f8f4.chunk.css": "/portfoliov2-client/static/css/784.3c98f8f4.chunk.css",
-    "static/js/784.5ca3d40b.chunk.js": "/portfoliov2-client/static/js/784.5ca3d40b.chunk.js",
+    "static/js/784.1b9cba81.chunk.js": "/portfoliov2-client/static/js/784.1b9cba81.chunk.js",
     "static/js/422.4b5d4246.chunk.js": "/portfoliov2-client/static/js/422.4b5d4246.chunk.js",
     "static/js/948.885012c9.chunk.js": "/portfoliov2-client/static/js/948.885012c9.chunk.js",
     "static/media/old_texture.jpg": "/portfoliov2-client/static/media/old_texture.20c74704c5803dfa713a.jpg",
@@ -27,16 +27,16 @@
     "static/media/tv_switch.png": "/portfoliov2-client/static/media/tv_switch.243853841305ab487ebe.png",
     "index.html": "/portfoliov2-client/index.html",
     "main.1b306426.css.map": "/portfoliov2-client/static/css/main.1b306426.css.map",
-    "main.08efcd62.js.map": "/portfoliov2-client/static/js/main.08efcd62.js.map",
+    "main.1526f306.js.map": "/portfoliov2-client/static/js/main.1526f306.js.map",
     "534.4ff13f7f.chunk.css.map": "/portfoliov2-client/static/css/534.4ff13f7f.chunk.css.map",
     "534.b453bc60.chunk.js.map": "/portfoliov2-client/static/js/534.b453bc60.chunk.js.map",
     "784.3c98f8f4.chunk.css.map": "/portfoliov2-client/static/css/784.3c98f8f4.chunk.css.map",
-    "784.5ca3d40b.chunk.js.map": "/portfoliov2-client/static/js/784.5ca3d40b.chunk.js.map",
+    "784.1b9cba81.chunk.js.map": "/portfoliov2-client/static/js/784.1b9cba81.chunk.js.map",
     "422.4b5d4246.chunk.js.map": "/portfoliov2-client/static/js/422.4b5d4246.chunk.js.map",
     "948.885012c9.chunk.js.map": "/portfoliov2-client/static/js/948.885012c9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1b306426.css",
-    "static/js/main.08efcd62.js"
+    "static/js/main.1526f306.js"
   ]
 }
