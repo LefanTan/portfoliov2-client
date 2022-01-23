@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfoliov2-client/static/css/main.47c4cfbf.css",
-    "main.js": "/portfoliov2-client/static/js/main.8dd16656.js",
+    "main.js": "/portfoliov2-client/static/js/main.d20b6a86.js",
     "static/css/534.49bb4b37.chunk.css": "/portfoliov2-client/static/css/534.49bb4b37.chunk.css",
     "static/js/534.263e1eb8.chunk.js": "/portfoliov2-client/static/js/534.263e1eb8.chunk.js",
     "static/css/784.f202d5b4.chunk.css": "/portfoliov2-client/static/css/784.f202d5b4.chunk.css",
@@ -27,7 +27,7 @@
     "static/media/tv_switch.png": "/portfoliov2-client/static/media/tv_switch.243853841305ab487ebe.png",
     "index.html": "/portfoliov2-client/index.html",
     "main.47c4cfbf.css.map": "/portfoliov2-client/static/css/main.47c4cfbf.css.map",
-    "main.8dd16656.js.map": "/portfoliov2-client/static/js/main.8dd16656.js.map",
+    "main.d20b6a86.js.map": "/portfoliov2-client/static/js/main.d20b6a86.js.map",
     "534.49bb4b37.chunk.css.map": "/portfoliov2-client/static/css/534.49bb4b37.chunk.css.map",
     "534.263e1eb8.chunk.js.map": "/portfoliov2-client/static/js/534.263e1eb8.chunk.js.map",
     "784.f202d5b4.chunk.css.map": "/portfoliov2-client/static/css/784.f202d5b4.chunk.css.map",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.47c4cfbf.css",
-    "static/js/main.8dd16656.js"
+    "static/js/main.d20b6a86.js"
   ]
 }
