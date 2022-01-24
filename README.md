@@ -6,7 +6,7 @@
 
 Well, I really didn't like the first iteration of my website, I think it's super weird and clunky and non-responsive, so here's a second version of it 😎
 
-In terms of design, I tried for the _60's 70's retro vibe_. The reason is because I saw a packaging of a harmonica that's in retro and thought
+In terms of design, I tried for the _60's 70's retro vibe_. I recently saw a packaging of a harmonica that's in retro and thought
 
 > Wowowow wouldn't that be cool as my websites' theme
 
