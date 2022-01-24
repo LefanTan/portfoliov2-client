@@ -17,6 +17,7 @@ const WelcomeSection = () => {
       <img src={old_texture} className="old-texture" alt="old texture" />
       <div className={styles.welcome_container}>
         <h1 className={styles.title}>WELCOME</h1>
+        <h4>(website in progress)</h4>
         <p>
           Hey there! My name is Jia Hui (Lefan) Tan, and I like building
           websites/application that looks good, works well, and accessible for

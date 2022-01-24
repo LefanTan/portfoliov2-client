@@ -61,10 +61,16 @@
   border-bottom: 2px dotted var(--beige);
 }
 
-.title + p {
+.welcome_container > h4 {
+  font-family: "Market Deco", sans-serif;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  color: var(--beige);
+}
+
+.welcome_container > p {
   font-family: "Bellota Text", serif;
   font-weight: bold;
-  margin-top: 2rem;
   font-size: 1.2rem;
   color: var(--beige);
 }
