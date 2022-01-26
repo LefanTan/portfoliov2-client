@@ -1,9 +1,9 @@
 import styles from "./projects.module.css";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { DataContext, ProjectData } from "./services/data.provider";
+import { DataContext, ProjectData } from "../services/data.provider";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
-import old_texture from "../assets/old_texture.jpg";
+import old_texture from "../../assets/old_texture.jpg";
 
 const ProjectsSection = () => {
   const dataContext = useContext(DataContext);

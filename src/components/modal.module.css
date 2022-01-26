@@ -1,0 +1,45 @@
+.wrapper {
+  z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+
+  border: none;
+
+  background-color: rgba(0, 0, 0, 0.493);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 90%;
+  height: 87.5%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close_button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  color: white;
+}
+
+.close_button:hover {
+  background-color: black;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+}

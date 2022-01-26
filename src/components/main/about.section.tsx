@@ -1,10 +1,10 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./about.module.css";
-import { DataContext } from "./services/data.provider";
-import rotate_bg from "../assets/rotating.jpg";
+import { DataContext } from "../services/data.provider";
+import rotate_bg from "../../assets/rotating.jpg";
 import ReactMarkdown from "react-markdown";
-import cutout from "../assets/cutout.png";
-import old_texture from "../assets/old_texture.jpg";
+import cutout from "../../assets/cutout.png";
+import old_texture from "../../assets/old_texture.jpg";
 import { CSSTransition } from "react-transition-group";
 import { CgArrowRight } from "react-icons/cg";
 
@@ -117,7 +117,7 @@ const AboutSection = () => {
                   onClick={() => setExpand(!expand)}
                   className={styles.read_more}
                 >
-                  {expand ? "Read less >" : "Read more >"}
+                  {expand ? "< Read less" : "Read more >"}
                 </button>
               )}
             </span>

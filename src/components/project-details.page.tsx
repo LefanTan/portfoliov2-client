@@ -5,10 +5,9 @@ import { DataContext, ProjectData } from "./services/data.provider";
 import old_texture from "../assets/old_texture.jpg";
 import onToggleLoader from "./helpers/onToggleLoader";
 import ReactMarkdown from "react-markdown";
-import Modal from "react-modal";
-import { CgArrowLeft } from "react-icons/cg";
 import Header from "./header";
 import Footer from "./footer";
+import Modal from "./modal";
 
 const ProjectDetailsPage = () => {
   const params = useParams();
@@ -18,21 +17,15 @@ const ProjectDetailsPage = () => {
   const [projectDetail, setDetail] = useState<ProjectData>();
   const [modalImage, setImage] = useState<string>();
   const [openModal, setOpenModal] = useState(false);
-
-  const modalStyle = {
-    overlay: {
-      zIndex: 7,
-      backgroundColor: "#363636d5",
-    },
-    content: {
-      backgroundColor: "transparent",
-      border: "none",
-    },
-  };
+  const [isInitLoad, setInitLoad] = useState(true);
 
   const onLoad = () => {
     onToggleLoader(false);
-    window.scroll(0, 0);
+    if (isInitLoad) window.scroll(0, 0);
+
+    // so window on scrolls to top on start
+    // Modal trigger this when opened
+    if (isInitLoad) setInitLoad(false);
   };
 
   useEffect(() => {
@@ -72,25 +65,19 @@ const ProjectDetailsPage = () => {
   };
 
   return (
-    <div className="body">
+    <div onLoad={onLoad} className="body">
       <Header />
-      <main onLoad={onLoad} className={styles.main}>
-        <Modal
-          preventScroll={true}
-          shouldCloseOnEsc={true}
-          shouldReturnFocusAfterClose={true}
-          isOpen={openModal}
-          contentLabel="Gallery Image Modal"
-          className={styles.modal}
-          style={modalStyle}
-        >
-          <div className={styles.modal_content}>
-            <button onClick={() => setOpenModal(false)}>
-              <CgArrowLeft size={30} />
-            </button>
-            <img src={modalImage} alt="selected media" />
-          </div>
-        </Modal>
+      <Modal
+        isOpen={openModal}
+        ariaModalLabel="Gallery Image Modal"
+        ariaModalDescription="Clear view of an Image"
+        onCloseClick={() => setOpenModal(false)}
+      >
+        <div className={styles.modal_content}>
+          <img src={modalImage} alt="selected media" />
+        </div>
+      </Modal>
+      <main className={styles.main}>
         <img
           src={old_texture}
           className={styles.old_texture}
@@ -104,49 +91,52 @@ const ProjectDetailsPage = () => {
           <h3>PERSONAL</h3>
         </div>
         <div className={styles.line} aria-label="line" />
+
         <h2 className={styles.title}>
           {projectDetail?.title.toLocaleUpperCase()}
         </h2>
-        <span className={styles.description}>
-          {projectDetail?.mainMediaUrl && (
-            <img src={projectDetail?.mainMediaUrl} alt="main media" />
-          )}
-          <ReactMarkdown components={{ p: "h1" }}>
-            {projectDetail?.description?.at(0) || ""}
-          </ReactMarkdown>
-          <ReactMarkdown>
-            {projectDetail?.description?.slice(1) || ""}
-          </ReactMarkdown>
-        </span>
-        <section className={styles.stack_links_container}>
-          <div>
+
+        <section className={styles.description_container}>
+          <span className={styles.description}>
+            {projectDetail?.mainMediaUrl && (
+              <img src={projectDetail?.mainMediaUrl} alt="main media" />
+            )}
+            <ReactMarkdown components={{ p: "h1" }}>
+              {projectDetail?.description?.at(0) || ""}
+            </ReactMarkdown>
+            <ReactMarkdown>
+              {projectDetail?.description?.slice(1) || ""}
+            </ReactMarkdown>
+          </span>
+
+          <div className={styles.stack_links_container}>
             <h2>TECH STACK</h2>
             <p>{projectDetail?.stack?.join(", ")}</p>
-          </div>
 
-          <div>
-            {projectDetail?.repo && (
-              <a href={projectDetail.repo} target="_blank" rel="noreferrer">
-                REPO
-              </a>
-            )}
-            {projectDetail?.link && (
-              <a href={projectDetail.link} target="_blank" rel="noreferrer">
-                WEBSITE
-              </a>
-            )}
+            <div>
+              {projectDetail?.repo && (
+                <a href={projectDetail.repo} target="_blank" rel="noreferrer">
+                  REPO
+                </a>
+              )}
+              {projectDetail?.link && (
+                <a href={projectDetail.link} target="_blank" rel="noreferrer">
+                  WEBSITE
+                </a>
+              )}
+            </div>
           </div>
         </section>
         <section>
           {projectDetail?.purposeAndGoal && (
             <div className={styles.container}>
-              <h2>PURPOSE & GOALS</h2>
               <span>
+                <h2>PURPOSE & GOALS</h2>
                 {projectDetail?.mediaUrls?.at(1) && (
                   <img
                     src={projectDetail?.mediaUrls?.at(1)}
                     alt="first media"
-                    style={{ float: "right" }}
+                    style={{ float: "right", marginLeft: "1rem" }}
                   />
                 )}
                 <ReactMarkdown>
@@ -157,12 +147,13 @@ const ProjectDetailsPage = () => {
           )}
           {projectDetail?.problems && (
             <div className={styles.container}>
-              <h2>PROBLEMS FACED</h2>
               <span>
+                <h2>PROBLEMS FACED</h2>
                 {projectDetail?.mediaUrls?.at(2) && (
                   <img
                     src={projectDetail?.mediaUrls?.at(2)}
                     alt="first media"
+                    style={{ marginRight: "1rem" }}
                   />
                 )}
                 <ReactMarkdown>{projectDetail?.problems || ""}</ReactMarkdown>

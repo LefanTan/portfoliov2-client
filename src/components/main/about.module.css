@@ -133,7 +133,6 @@
   font-size: max(4rem, 7vmax);
 
   color: var(--black);
-  margin-bottom: 1vw;
 }
 
 .paragraph p {
@@ -161,6 +160,8 @@
   font-family: "Abhaya Libre", serif;
   font-weight: bold;
   font-size: 1.2rem;
+  text-align: left;
+  width: 100%;
   background-color: transparent;
 }
 

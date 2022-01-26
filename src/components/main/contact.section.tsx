@@ -1,11 +1,11 @@
 import { FormEvent, useContext, useRef } from "react";
 import styles from "./contact.module.css";
-import letter from "../assets/letter.png";
+import letter from "../../assets/letter.png";
 import { FaLinkedinIn, FaGithubAlt, FaRegFilePdf } from "react-icons/fa";
-import { DataContext } from "./services/data.provider";
+import { DataContext } from "../services/data.provider";
 import emailjs from "@emailjs/browser";
-import useMediaChange from "./helpers/useMediaChange";
-import old_texture from "../assets/old_texture.jpg";
+import useMediaChange from "../helpers/useMediaChange";
+import old_texture from "../../assets/old_texture.jpg";
 
 const ContactSection = () => {
   const dataContext = useContext(DataContext);
