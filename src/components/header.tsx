@@ -13,6 +13,7 @@ const Header = () => {
   const [blackAndWhite, setBW] = useState(false);
   const mobile = useMediaChange("(max-width: 700px)");
   const ref = useRef<HTMLElement>(null);
+  const sideRef = useRef<HTMLElement>(null);
 
   let prevScrollY = 0;
   let totalScrolledUp = 0;
@@ -48,6 +49,28 @@ const Header = () => {
   }, 50);
 
   useEffect(() => {
+    if (!sideRef.current) return;
+
+    // set focus on first tabbable item in the nav bar
+    const elements = Array.from(
+      sideRef.current?.querySelectorAll(
+        "a[href]:not([disabled]), button:not([disabled])"
+      )
+    );
+    (elements.at(0) as HTMLElement).focus();
+
+    const handleFocus = (e: FocusEvent) => {
+      e.preventDefault();
+      if (!elements.includes(e.target as HTMLElement)) {
+        setMenu(false);
+      }
+    };
+    document.addEventListener("focus", handleFocus, true);
+
+    return () => document.removeEventListener("focus", handleFocus, true);
+  }, [menu]);
+
+  useEffect(() => {
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
@@ -78,7 +101,7 @@ const Header = () => {
             exitActive: styles.mobileNavExitActive,
           }}
         >
-          <nav className={`${styles.side_nav}`}>
+          <nav ref={sideRef} className={`${styles.side_nav}`}>
             <img src={old_texture} className="old-texture" alt="old texture" />
             <ul onClick={() => setMenu(false)}>
               <button className={styles.cancel_button} aria-label="hide menu">
@@ -179,7 +202,7 @@ const Header = () => {
             <HashLink to="/#home" replace className={styles.title}>
               <img src={title} alt="title" />
             </HashLink>
-            <button onClick={() => setMenu(true)} aria-label="side menu">
+            <button onClick={() => setMenu(!menu)} aria-label="side menu">
               <CgMenuGridO size={30} />
             </button>
           </>

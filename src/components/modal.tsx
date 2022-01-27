@@ -11,7 +11,10 @@ interface ModalProps {
 
 /**
  * Simple Modal
- * @param props
+ * @param onCloseClick
+ * @param ariaModalLabel
+ * @param ariaModalDescription
+ * @param isOpen
  * @returns
  */
 const Modal: React.FC<ModalProps> = (props) => {
@@ -26,29 +29,23 @@ const Modal: React.FC<ModalProps> = (props) => {
       )
     );
     const firstEle = tabbableElements[0] as HTMLElement;
-    const lastEle = tabbableElements[
-      tabbableElements.length - 1
-    ] as HTMLElement;
-    let currentFocused: HTMLElement;
-
     firstEle.focus();
-    currentFocused = firstEle;
 
     const handleFocus = (e: FocusEvent) => {
-      console.log(e.target);
       e.preventDefault();
 
       if (!tabbableElements.includes(e.target as Element)) {
         // tabbed out
         firstEle.focus();
+      } else {
+        (e.target as HTMLElement).focus();
       }
     };
 
-    document.addEventListener("focus", handleFocus);
-
+    document.addEventListener("focus", handleFocus, true);
     return {
       onClose: () => {
-        document.removeEventListener("focus", handleFocus);
+        document.removeEventListener("focus", handleFocus, true);
       },
     };
   };

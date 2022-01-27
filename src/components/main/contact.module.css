@@ -181,6 +181,42 @@
   opacity: 1;
 }
 
+.modal_content {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: var(--red);
+
+  width: 25rem;
+  position: relative;
+}
+
+.modal_content > h1 {
+  font-size: 2rem;
+}
+
+.modal_content > p {
+  margin-top: 0.5rem;
+}
+
+.modal_content > button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+
+  display: flex;
+  align-items: center;
+
+  background-color: transparent;
+  color: var(--dirty-blue);
+}
+
+.modal_content > button:hover {
+  transition: 200ms;
+  background-color: var(--dirty-blue);
+  color: white;
+}
+
 @media (max-width: 700px) {
   .section {
     justify-content: center;

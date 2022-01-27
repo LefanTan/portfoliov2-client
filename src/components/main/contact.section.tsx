@@ -1,9 +1,10 @@
-import { FormEvent, useContext, useRef } from "react";
+import { FormEvent, useContext, useRef, useState } from "react";
 import styles from "./contact.module.css";
 import letter from "../../assets/letter.png";
 import { FaLinkedinIn, FaGithubAlt, FaRegFilePdf } from "react-icons/fa";
 import { DataContext } from "../services/data.provider";
 import emailjs from "@emailjs/browser";
+import { RiCloseFill } from "react-icons/ri";
 import useMediaChange from "../helpers/useMediaChange";
 import old_texture from "../../assets/old_texture.jpg";
 import Modal from "../modal";
@@ -12,6 +13,7 @@ const ContactSection = () => {
   const dataContext = useContext(DataContext);
   const mobile = useMediaChange("(max-width: 800px)");
   const form = useRef<HTMLFormElement>(null);
+  const [openModal, setOpenModal] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -25,7 +27,7 @@ const ContactSection = () => {
           process.env.REACT_APP_EMAIL_USER_ID || ""
         )
         .then(() => {
-          alert("Thanks for the email, I'll get back to you soon!");
+          setOpenModal(true);
           form.current?.reset();
         })
         .catch((err) => console.error("Send email failed...", err));
@@ -34,6 +36,20 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className={styles.section}>
+      <Modal
+        isOpen={openModal}
+        onCloseClick={() => setOpenModal(false)}
+        ariaModalLabel="Email Confirmation Modal"
+        ariaModalDescription="A modal to confirm your email being sent"
+      >
+        <div className={styles.modal_content}>
+          <button onClick={() => setOpenModal(false)}>
+            <RiCloseFill size={20} />
+          </button>
+          <h1>Thank you for the email!</h1>
+          <p>I'll be sure to get back to you as soon as possible</p>
+        </div>
+      </Modal>
       <img src={old_texture} className="old-texture" alt="old texture" />
       <div className={styles.links_container}>
         <h1 className={styles.title}>Let's Talk</h1>
