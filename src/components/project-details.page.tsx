@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./project-details.module.css";
 import { DataContext, ProjectData } from "./services/data.provider";
@@ -18,6 +18,8 @@ const ProjectDetailsPage = () => {
   const [modalImage, setImage] = useState<string>();
   const [openModal, setOpenModal] = useState(false);
   const [isInitLoad, setInitLoad] = useState(true);
+
+  let mediaIndex = 0;
 
   const onLoad = () => {
     onToggleLoader(false);
@@ -48,6 +50,7 @@ const ProjectDetailsPage = () => {
     url: string;
     alt: string;
     onClick: () => void;
+    style?: CSSProperties;
   }) => {
     const [hover, setHover] = useState(false);
 
@@ -57,6 +60,7 @@ const ProjectDetailsPage = () => {
         onClick={props.onClick}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
+        style={props.style}
       >
         {hover && <h2>EXPAND</h2>}
         <img src={props.url} alt={props.alt} />
@@ -99,7 +103,15 @@ const ProjectDetailsPage = () => {
         <section className={styles.description_container}>
           <span className={styles.description}>
             {projectDetail?.mainMediaUrl && (
-              <img src={projectDetail?.mainMediaUrl} alt="main media" />
+              <ImageButton
+                key={projectDetail?.mainMediaUrl}
+                onClick={() => {
+                  setOpenModal(true);
+                  setImage(projectDetail?.mainMediaUrl);
+                }}
+                url={projectDetail?.mainMediaUrl}
+                alt="main media"
+              />
             )}
             <ReactMarkdown components={{ p: "h1" }}>
               {projectDetail?.description?.at(0) || ""}
@@ -131,12 +143,17 @@ const ProjectDetailsPage = () => {
           {projectDetail?.purposeAndGoal && (
             <div className={styles.container}>
               <span>
-                <h2>PURPOSE & GOALS</h2>
-                {projectDetail?.mediaUrls?.at(1) && (
-                  <img
-                    src={projectDetail?.mediaUrls?.at(1)}
-                    alt="first media"
-                    style={{ float: "right", marginLeft: "1rem" }}
+                <h2 className={styles.container_title}>PURPOSE & GOALS</h2>
+                {projectDetail?.mediaUrls?.at(mediaIndex) && (
+                  <ImageButton
+                    key={projectDetail?.mediaUrls?.at(mediaIndex)}
+                    onClick={() => {
+                      setOpenModal(true);
+                      setImage(projectDetail?.mediaUrls?.at(mediaIndex));
+                    }}
+                    url={projectDetail?.mediaUrls?.at(mediaIndex)!}
+                    alt="second media"
+                    style={{ float: "right" }}
                   />
                 )}
                 <ReactMarkdown>
@@ -148,11 +165,16 @@ const ProjectDetailsPage = () => {
           {projectDetail?.problems && (
             <div className={styles.container}>
               <span>
-                <h2>PROBLEMS FACED</h2>
-                {projectDetail?.mediaUrls?.at(2) && (
-                  <img
-                    src={projectDetail?.mediaUrls?.at(2)}
-                    alt="first media"
+                <h2 className={styles.container_title}>PROBLEMS FACED</h2>
+                {projectDetail?.mediaUrls?.at(++mediaIndex) && (
+                  <ImageButton
+                    key={projectDetail?.mediaUrls?.at(mediaIndex)}
+                    onClick={() => {
+                      setOpenModal(true);
+                      setImage(projectDetail?.mediaUrls?.at(mediaIndex));
+                    }}
+                    url={projectDetail?.mediaUrls?.at(mediaIndex)!}
+                    alt="third media"
                     style={{ marginRight: "1rem" }}
                   />
                 )}

@@ -88,7 +88,7 @@
 
 .description_container {
   display: flex;
-  padding-bottom: 2rem;
+  margin-bottom: 4rem;
   align-items: flex-start;
 }
 
@@ -103,14 +103,15 @@
   font-size: 3.5rem;
 }
 
-.description > img {
-  min-width: 10rem;
-  max-height: 25rem;
-  max-width: 50%;
-
-  object-fit: cover;
+.description .image_button {
+  min-width: 15rem;
+  max-width: 40rem;
   float: left;
   margin-right: 1rem;
+}
+
+.description .image_button > img {
+  max-height: 25rem;
 }
 
 .stack_links_container {
@@ -178,7 +179,7 @@
   margin-bottom: 4rem;
 }
 
-.container h2 {
+.container_title {
   display: inline-block;
   background-color: var(--dark-grey);
   color: var(--beige);
@@ -189,12 +190,20 @@
   padding-top: 0.25rem;
 }
 
-.container img {
-  min-width: 10rem;
-  max-height: 30rem;
-  max-width: 50%;
-  object-fit: contain;
+.container .image_button {
   float: left;
+
+  max-width: 40rem;
+  min-width: 15rem;
+
+  margin-bottom: 1rem;
+}
+
+.container .image_button > img {
+  max-height: 30rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .lessons_container {
@@ -237,21 +246,21 @@
 }
 
 .gallery_images > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin-right: 1rem;
   margin-top: 1rem;
   background-color: transparent;
-  height: 25vw;
-}
 
-.gallery_images img {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-  border: 3px solid var(--beige);
+  height: 30vh;
 }
 
 .image_button {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .image_button:after {
@@ -273,6 +282,13 @@
   opacity: 0.7;
 }
 
+.image_button > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border: 3px solid var(--beige);
+}
+
 .image_button > h2 {
   width: 100%;
 
@@ -280,7 +296,7 @@
   color: var(--beige);
   font-weight: bold;
 
-  font-size: 2vw;
+  font-size: 2rem;
   z-index: 1;
   position: absolute;
   top: 50%;
@@ -337,6 +353,8 @@
   .description_container {
     flex-wrap: wrap;
     justify-content: center;
+
+    margin-bottom: 1rem;
   }
 
   .stack_links_container > div {
@@ -357,5 +375,9 @@
 
   .right_side:after {
     width: 0;
+  }
+
+  .gallery_images > button {
+    height: auto;
   }
 }
