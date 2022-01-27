@@ -86,3 +86,12 @@ button {
 .flipY {
   transform: scaleY(-1);
 }
+
+.visual-hide {
+  opacity: 0;
+}
+
+.visual-show {
+  transition: 1s;
+  opacity: 1;
+}

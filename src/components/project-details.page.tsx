@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 import Header from "./header";
 import Footer from "./footer";
 import Modal from "./modal";
+import InView from "react-intersection-observer";
 
 const ProjectDetailsPage = () => {
   const params = useParams();
@@ -19,7 +20,9 @@ const ProjectDetailsPage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [isInitLoad, setInitLoad] = useState(true);
 
-  let mediaIndex = 0;
+  const firstMedia = projectDetail?.mediaUrls?.at(0);
+  const secondMedia = projectDetail?.mediaUrls?.at(1);
+  const thirdMedia = projectDetail?.mediaUrls?.at(2);
 
   const onLoad = () => {
     onToggleLoader(false);
@@ -88,139 +91,174 @@ const ProjectDetailsPage = () => {
           alt="old texture"
         />
 
-        <h1 className={styles.heading}>GOOD OL' PROJECT NEWS</h1>
-        <div className={styles.line} aria-label="line" />
-        <div className={styles.row_space_between + " " + styles.line_box}>
-          <h3>{projectDetail?.inProgress ? "IN PROGRESS" : ""}</h3>
-          <h3>PERSONAL</h3>
-        </div>
-        <div className={styles.line} aria-label="line" />
-
-        <h2 className={styles.title}>
-          {projectDetail?.title.toLocaleUpperCase()}
-        </h2>
-
-        <section className={styles.description_container}>
-          <span className={styles.description}>
-            {projectDetail?.mainMediaUrl && (
-              <ImageButton
-                key={projectDetail?.mainMediaUrl}
-                onClick={() => {
-                  setOpenModal(true);
-                  setImage(projectDetail?.mainMediaUrl);
-                }}
-                url={projectDetail?.mainMediaUrl}
-                alt="main media"
-              />
-            )}
-            <ReactMarkdown components={{ p: "h1" }}>
-              {projectDetail?.description?.at(0) || ""}
-            </ReactMarkdown>
-            <ReactMarkdown>
-              {projectDetail?.description?.slice(1) || ""}
-            </ReactMarkdown>
-          </span>
-
-          <div className={styles.stack_links_container}>
-            <h2>TECH STACK</h2>
-            <p>{projectDetail?.stack?.join(", ")}</p>
-
-            <div>
-              {projectDetail?.repo && (
-                <a href={projectDetail.repo} target="_blank" rel="noreferrer">
-                  REPO
-                </a>
-              )}
-              {projectDetail?.link && (
-                <a href={projectDetail.link} target="_blank" rel="noreferrer">
-                  WEBSITE
-                </a>
-              )}
-            </div>
+        <div className={styles.content}>
+          <h1 className={styles.heading}>GOOD OL' PROJECT NEWS</h1>
+          <div className={styles.line} aria-label="line" />
+          <div className={styles.row_space_between + " " + styles.line_box}>
+            <h3>{projectDetail?.inProgress ? "IN PROGRESS" : ""}</h3>
+            <h3>PERSONAL</h3>
           </div>
-        </section>
-        <section>
-          {projectDetail?.purposeAndGoal && (
-            <div className={styles.container}>
-              <span>
-                <h2 className={styles.container_title}>PURPOSE & GOALS</h2>
-                {projectDetail?.mediaUrls?.at(mediaIndex) && (
-                  <ImageButton
-                    key={projectDetail?.mediaUrls?.at(mediaIndex)}
-                    onClick={() => {
-                      setOpenModal(true);
-                      setImage(projectDetail?.mediaUrls?.at(mediaIndex));
-                    }}
-                    url={projectDetail?.mediaUrls?.at(mediaIndex)!}
-                    alt="second media"
-                    style={{ float: "right" }}
-                  />
-                )}
-                <ReactMarkdown>
-                  {projectDetail?.purposeAndGoal || ""}
-                </ReactMarkdown>
-              </span>
-            </div>
-          )}
-          {projectDetail?.problems && (
-            <div className={styles.container}>
-              <span>
-                <h2 className={styles.container_title}>PROBLEMS FACED</h2>
-                {projectDetail?.mediaUrls?.at(++mediaIndex) && (
-                  <ImageButton
-                    key={projectDetail?.mediaUrls?.at(mediaIndex)}
-                    onClick={() => {
-                      setOpenModal(true);
-                      setImage(projectDetail?.mediaUrls?.at(mediaIndex));
-                    }}
-                    url={projectDetail?.mediaUrls?.at(mediaIndex)!}
-                    alt="third media"
-                    style={{ marginRight: "1rem" }}
-                  />
-                )}
-                <ReactMarkdown>{projectDetail?.problems || ""}</ReactMarkdown>
-              </span>
-            </div>
-          )}
-        </section>
+          <div className={styles.line} aria-label="line" />
 
-        {projectDetail?.lessonsLearned && (
-          <div className={styles.lessons_container}>
-            <h2>LESSONS LEARNED</h2>
-            <ReactMarkdown>{projectDetail?.lessonsLearned || ""}</ReactMarkdown>
-          </div>
-        )}
+          <h2 className={styles.title}>
+            {projectDetail?.title.toLocaleUpperCase()}
+          </h2>
 
-        {projectDetail?.mediaUrls && projectDetail?.mediaUrls.length > 0 && (
-          <section className={styles.gallery}>
-            <div className={styles.gallery_images}>
-              <div>
-                <h3>GALLERY</h3>
-              </div>
-              {projectDetail.mainMediaUrl && (
+          <section className={styles.description_container}>
+            <span className={styles.description}>
+              {projectDetail?.mainMediaUrl && (
                 <ImageButton
+                  key={projectDetail?.mainMediaUrl}
                   onClick={() => {
                     setOpenModal(true);
-                    setImage(projectDetail.mainMediaUrl);
+                    setImage(projectDetail?.mainMediaUrl);
                   }}
-                  url={projectDetail.mainMediaUrl}
+                  url={projectDetail?.mainMediaUrl}
                   alt="main media"
                 />
               )}
-              {projectDetail?.mediaUrls.map((url, i) => (
-                <ImageButton
-                  key={url}
-                  onClick={() => {
-                    setOpenModal(true);
-                    setImage(url);
-                  }}
-                  url={url}
-                  alt={i + " media"}
-                />
-              ))}
+              <ReactMarkdown components={{ p: "h1" }}>
+                {projectDetail?.description?.at(0) || ""}
+              </ReactMarkdown>
+              <ReactMarkdown>
+                {projectDetail?.description?.slice(1) || ""}
+              </ReactMarkdown>
+            </span>
+
+            <div className={styles.stack_links_container}>
+              <h2>TECH STACK</h2>
+              <p>{projectDetail?.stack?.join(", ")}</p>
+
+              <div>
+                {projectDetail?.repo && (
+                  <a href={projectDetail.repo} target="_blank" rel="noreferrer">
+                    REPO
+                  </a>
+                )}
+                {projectDetail?.link && (
+                  <a href={projectDetail.link} target="_blank" rel="noreferrer">
+                    WEBSITE
+                  </a>
+                )}
+              </div>
             </div>
           </section>
-        )}
+
+          <section>
+            {projectDetail?.purposeAndGoal && (
+              <InView triggerOnce delay={1}>
+                {({ inView, ref }) => (
+                  <div
+                    ref={ref}
+                    className={`${styles.container} ${
+                      inView ? "visual-show" : "visual-hide"
+                    }`}
+                  >
+                    <span>
+                      <h2 className={styles.container_title}>
+                        PURPOSE & GOALS
+                      </h2>
+                      {firstMedia && (
+                        <ImageButton
+                          key={firstMedia}
+                          onClick={() => {
+                            setOpenModal(true);
+                            setImage(firstMedia);
+                          }}
+                          url={firstMedia}
+                          alt="second media"
+                          style={{ float: "right" }}
+                        />
+                      )}
+                      <ReactMarkdown>
+                        {projectDetail?.purposeAndGoal || ""}
+                      </ReactMarkdown>
+                    </span>
+                  </div>
+                )}
+              </InView>
+            )}
+            {projectDetail?.problems && (
+              <InView triggerOnce>
+                {({ inView, ref }) => (
+                  <div
+                    ref={ref}
+                    className={`${styles.container} ${
+                      inView ? "visual-show" : "visual-hide"
+                    }`}
+                  >
+                    <span>
+                      <h2 className={styles.container_title}>PROBLEMS FACED</h2>
+                      {secondMedia && (
+                        <ImageButton
+                          key={secondMedia}
+                          onClick={() => {
+                            setOpenModal(true);
+                            setImage(secondMedia);
+                          }}
+                          url={secondMedia}
+                          alt="third media"
+                          style={{ marginRight: "2rem" }}
+                        />
+                      )}
+                      <ReactMarkdown>
+                        {projectDetail?.problems || ""}
+                      </ReactMarkdown>
+                    </span>
+                  </div>
+                )}
+              </InView>
+            )}
+          </section>
+          {projectDetail?.lessonsLearned && (
+            <InView triggerOnce>
+              {({ inView, ref }) => (
+                <div
+                  ref={ref}
+                  className={`${styles.lessons_container} ${
+                    inView ? "visual-show" : "visual-hide"
+                  }`}
+                >
+                  <h2>LESSONS LEARNED</h2>
+                  <ReactMarkdown>
+                    {projectDetail?.lessonsLearned || ""}
+                  </ReactMarkdown>
+                </div>
+              )}
+            </InView>
+          )}
+
+          {projectDetail?.mediaUrls && projectDetail?.mediaUrls.length > 0 && (
+            <section className={styles.gallery}>
+              <div className={styles.gallery_images}>
+                <div>
+                  <h3>GALLERY</h3>
+                </div>
+                {projectDetail.mainMediaUrl && (
+                  <ImageButton
+                    onClick={() => {
+                      setOpenModal(true);
+                      setImage(projectDetail.mainMediaUrl);
+                    }}
+                    url={projectDetail.mainMediaUrl}
+                    alt="main media"
+                  />
+                )}
+                {projectDetail?.mediaUrls.map((url, i) => (
+                  <ImageButton
+                    key={url}
+                    onClick={() => {
+                      setOpenModal(true);
+                      setImage(url);
+                    }}
+                    url={url}
+                    alt={i + " media"}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
       </main>
       <Footer disableTexture />
     </div>

@@ -6,6 +6,7 @@ import { DataContext } from "../services/data.provider";
 import emailjs from "@emailjs/browser";
 import useMediaChange from "../helpers/useMediaChange";
 import old_texture from "../../assets/old_texture.jpg";
+import Modal from "../modal";
 
 const ContactSection = () => {
   const dataContext = useContext(DataContext);

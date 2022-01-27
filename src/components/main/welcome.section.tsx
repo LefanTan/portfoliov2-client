@@ -25,7 +25,17 @@ const WelcomeSection = () => {
           everyone!
         </p>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-        <a href="#about" className={styles.see_more} aria-label="see more" />
+        <a
+          href="#about"
+          onClick={(e) => {
+            e.preventDefault();
+            document.body
+              .querySelector("#about")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className={styles.see_more}
+          aria-label="see more"
+        />
       </div>
 
       <div className={styles.tv_container}>
