@@ -14,7 +14,7 @@ const AppRoutes = () => {
 
   // On DOM initial load, hide loader
   const onLoad = useCallback(() => {
-    if (dataContext.projects) onToggleLoader(false);
+    if (dataContext.user) onToggleLoader(false);
   }, [dataContext]);
 
   useEffect(() => {

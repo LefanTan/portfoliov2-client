@@ -85,7 +85,7 @@
 .cutout_button {
   background-color: transparent;
   position: absolute;
-  bottom: -5%;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
 
@@ -95,14 +95,18 @@
   animation: move 5s linear infinite;
 }
 
-.cutout_button > img {
+.cutout_button > div {
   transition: 100ms;
   height: 100%;
 }
 
-.cutout_button > img:hover {
+.cutout_button > div:hover {
   filter: grayscale(1);
-  transform: scale(0.9);
+  transform: scale(0.9) translateY(5%);
+}
+
+.cutout_button > div > img {
+  height: 100%;
 }
 
 @keyframes move {
@@ -276,11 +280,7 @@
 }
 
 .opacity_enter_active {
-  transition: 200ms;
-  opacity: 1;
-}
-
-.opacity_enter_done {
+  transition: 500ms;
   opacity: 1;
 }
 
@@ -289,10 +289,18 @@
 }
 
 .opacity_exit_active {
-  transition: 200ms;
+  transition: 500ms;
   opacity: 0;
 }
 
-.opacity_exit_done {
+.card_hide {
   opacity: 0;
+  transition: 0.76s ease-in-out;
+  transform: rotateX(60deg);
+}
+
+.card_show {
+  opacity: 1;
+  transition: 0.7s ease-in-out;
+  transform: rotateX(0deg);
 }

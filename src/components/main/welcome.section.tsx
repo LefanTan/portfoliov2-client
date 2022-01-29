@@ -16,55 +16,56 @@ const WelcomeSection = () => {
     <section id="home" className={styles.section}>
       <img src={old_texture} className="old-texture" alt="old texture" />
 
-      <div className={styles.welcome_container}>
-        <h1 className={styles.title}>WELCOME</h1>
-        <h4>(website in progress)</h4>
-        <p>
-          Hey there! My name is Jia Hui (Lefan) Tan, and I like building
-          websites/application that looks good, works well, and accessible for
-          everyone!
-        </p>
-        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-        <a
-          href="#about"
-          onClick={(e) => {
-            e.preventDefault();
-            document.body
-              .querySelector("#about")
-              ?.scrollIntoView({ behavior: "smooth" });
-          }}
-          className={styles.see_more}
-          aria-label="see more"
-        />
-      </div>
+      <div className={styles.content}>
+        <div className={styles.welcome_container}>
+          <h1 className={styles.title}>WELCOME</h1>
+          <p>
+            Hey there! My name is Jia Hui (Lefan) Tan, and I like building
+            websites/application that looks good, works well, and accessible for
+            everyone!
+          </p>
+          {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+          <a
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              document.body
+                .querySelector("#about")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className={styles.see_more}
+            aria-label="see more"
+          />
+        </div>
 
-      <div className={styles.tv_container}>
-        <img src={dot} alt="dot background" className={styles.dot} />
-        <button
-          onClick={() => setTvOn(!tvOn)}
-          aria-label="tv switch"
-          aria-pressed={tvOn}
-          className={tvOn ? styles.rotate : ""}
-        />
-        <img alt="tv" src={tv} className={styles.tv} />
-        <img
-          alt="face"
-          src={dataContext.profile?.mainMediaUrl ?? photo}
-          className={styles.photo}
-        />
-        <img
-          alt="noise gif"
-          src={noise}
-          className={styles.photo}
-          style={{ opacity: tvOn ? 0.45 : 1 }}
-        />
-        <img
-          alt="noise gif"
-          src={nosie_gif}
-          className={styles.photo}
-          style={{ opacity: tvOn ? 0 : 1 }}
-        />
-        <div className={styles.circle} />
+        <div className={styles.tv_container}>
+          <img src={dot} alt="dot background" className={styles.dot} />
+          <button
+            onClick={() => setTvOn(!tvOn)}
+            aria-label="tv switch"
+            aria-pressed={tvOn}
+            className={tvOn ? styles.rotate : ""}
+          />
+          <img alt="tv" src={tv} className={styles.tv} />
+          <img
+            alt="face"
+            src={dataContext.profile?.mainMediaUrl ?? photo}
+            className={styles.photo}
+          />
+          <img
+            alt="noise gif"
+            src={noise}
+            className={styles.photo}
+            style={{ opacity: tvOn ? 0.45 : 1 }}
+          />
+          <img
+            alt="noise gif"
+            src={nosie_gif}
+            className={styles.photo}
+            style={{ opacity: tvOn ? 0 : 1 }}
+          />
+          <div className={styles.circle} />
+        </div>
       </div>
     </section>
   );

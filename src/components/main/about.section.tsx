@@ -7,6 +7,7 @@ import cutout from "../../assets/cutout.png";
 import old_texture from "../../assets/old_texture.jpg";
 import { CSSTransition } from "react-transition-group";
 import { CgArrowRight } from "react-icons/cg";
+import InView from "react-intersection-observer";
 
 const AboutSection = () => {
   const dataContext = useContext(DataContext);
@@ -71,15 +72,23 @@ const AboutSection = () => {
             alt="rotating background"
             className={styles.rotate_background}
           />
-          <button
-            className={styles.cutout_button}
-            onClick={() => setOpen(true)}
-          >
-            <img
-              src={dataContext.profile?.mediaUrls?.at(0) || cutout}
-              alt="lefan's cool cutout"
-            />
-          </button>
+          <InView triggerOnce rootMargin="-30% 0px">
+            {({ inView, ref, entry }) => (
+              <button
+                ref={ref}
+                className={styles.cutout_button}
+                onClick={() => setOpen(true)}
+              >
+                <div>
+                  <img
+                    src={dataContext.profile?.mediaUrls?.at(0) || cutout}
+                    alt="lefan's cool cutout"
+                    className={inView ? styles.card_show : styles.card_hide}
+                  />
+                </div>
+              </button>
+            )}
+          </InView>
         </div>
       </CSSTransition>
       <CSSTransition

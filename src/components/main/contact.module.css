@@ -1,22 +1,23 @@
 .section {
-  min-height: 70vh;
   background-color: var(--beige);
   background-size: cover;
 
-  display: flex;
-  padding: 5rem 5rem;
-  align-content: center;
-  flex-wrap: wrap;
   position: relative;
+}
+
+.content {
+  padding: 5rem 5rem;
+  display: flex;
+  align-content: center;
+  width: 100%;
 }
 
 /**
 * Links Container
 */
-.section > .links_container {
+.content .links_container {
   display: flex;
   flex-direction: column;
-  flex: 1;
   width: 100%;
   margin-right: 2rem;
   align-content: flex-start;
@@ -27,6 +28,7 @@
   color: var(--red);
   text-shadow: 7px 7px rgba(117, 117, 117, 0.342);
 
+  white-space: nowrap;
   position: relative;
   width: fit-content;
   align-self: flex-start;
@@ -99,9 +101,7 @@
 * Forms Container
 */
 
-.section > .forms {
-  flex: 1;
-  min-width: 15rem;
+.content .forms {
   width: 100%;
 
   display: block;
@@ -143,7 +143,7 @@
 }
 
 .forms > textarea {
-  min-height: 10rem;
+  min-height: 15rem;
 }
 
 .submit {
@@ -217,17 +217,25 @@
   color: white;
 }
 
-@media (max-width: 700px) {
-  .section {
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem var(--horizontal-padding);
+@media (max-width: 1200px) {
+  .content {
+    flex-wrap: wrap;
   }
 
-  .section > .links_container {
-    padding: 0rem;
-    margin-bottom: 1rem;
+  .content .forms {
+    margin: 3rem 0rem;
+  }
+
+  .content .links_container {
     margin-right: 0rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .content {
+    padding: 2rem var(--horizontal-padding);
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .links_container > address {
@@ -243,7 +251,17 @@
     margin-right: 0rem;
   }
 
+  .section .forms {
+    margin: 1rem 0rem;
+  }
+
   .forms > img {
     opacity: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .title {
+    white-space: normal;
   }
 }

@@ -2,19 +2,34 @@
   background-color: var(--dirty-blue);
   background-image: url("../../assets/paper.png");
   background-size: cover;
-  min-height: 90vh;
-  width: 100%;
 
-  display: flex;
-  justify-content: space-evenly;
+  overflow: hidden;
   position: relative;
+}
+
+.content {
   padding-top: var(--header-height);
   padding-left: var(--horizontal-padding);
   padding-right: var(--horizontal-padding);
-  overflow: hidden;
+
+  display: flex;
+  justify-content: space-evenly;
+
+  width: 100%;
+  min-height: 90vh;
+  animation: onload 0.5s linear;
 }
 
-.section > div {
+@keyframes onload {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.content > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,16 +76,10 @@
   border-bottom: 2px dotted var(--beige);
 }
 
-.welcome_container > h4 {
-  font-family: "Market Deco", sans-serif;
-  font-size: 1.2rem;
-  margin-top: 1.5rem;
-  color: var(--beige);
-}
-
 .welcome_container > p {
   font-family: "Bellota Text", serif;
   font-weight: bold;
+  margin-top: 1.5rem;
   font-size: 1.2rem;
   color: var(--beige);
 }
@@ -240,11 +249,11 @@
 }
 
 @media (max-width: 700px) {
-  .section {
+  .content {
     flex-wrap: wrap;
   }
 
-  .section > .welcome_container {
+  .content > .welcome_container {
     width: 100%;
   }
 

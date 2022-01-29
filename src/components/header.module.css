@@ -96,15 +96,7 @@ nav ul {
   text-shadow: none;
 }
 
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
-*:focus-visible {
-  outline: 3px solid var(--blue);
-}
-
-.header_anchor:focus-within:focus-visible::after {
+.header_anchor:focus-visible::after {
   border: none;
 }
 

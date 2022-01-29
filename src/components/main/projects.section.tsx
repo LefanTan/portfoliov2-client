@@ -1,13 +1,19 @@
 import styles from "./projects.module.css";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import {
+  CSSProperties,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { DataContext, ProjectData } from "../services/data.provider";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import old_texture from "../../assets/old_texture.jpg";
+import InView from "react-intersection-observer";
 
 const ProjectsSection = () => {
   const dataContext = useContext(DataContext);
-  const projectsGrid = useRef<HTMLDivElement>(null);
   const [showMore, setShowMore] = useState(false);
   const [projects, setProjects] = useState<ProjectData[]>();
   const [extraProjects, setExtraProjects] = useState<ProjectData[]>();
@@ -40,32 +46,6 @@ const ProjectsSection = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mobileMediaHandler]);
 
-  const Project = (project: ProjectData) => {
-    const [hover, setHover] = useState(false);
-
-    return (
-      <div className={styles.project_container}>
-        <Link
-          to={`/project/${project.title
-            .match(/\w+/g)
-            ?.join("-")
-            .toLocaleLowerCase()}`}
-          aria-label={project.title}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className={styles.image_button}
-        >
-          {hover && <h2>SEE MORE</h2>}
-          <img src={project.mainMediaUrl} alt={`${project.title} demo`} />
-        </Link>
-        <div className={styles.spread_row}>
-          <h2>{project.title.toLocaleUpperCase()}</h2>
-          <ReactMarkdown>{project.shortDescription}</ReactMarkdown>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <section id="projects" className={styles.section}>
       <img
@@ -75,15 +55,27 @@ const ProjectsSection = () => {
         style={{ opacity: 0.15 }}
       />
       <h1 className={styles.title}>PROJECTS</h1>
-      <div ref={projectsGrid}>
-        {projects?.map((project) => (
-          <Project key={project.id} {...project} />
-        ))}
-        {showMore &&
-          extraProjects?.map((project) => (
-            <Project key={project.id} {...project} />
-          ))}
-      </div>
+      <InView triggerOnce threshold={0.3}>
+        {({ inView, ref }) => {
+          return (
+            <div ref={ref}>
+              {projects?.map((project, i) => (
+                <ProjectLink
+                  key={project.id}
+                  project={project}
+                  className={inView ? styles.stagger_animation : ""}
+                  style={{ "--animation-order": i } as CSSProperties}
+                />
+              ))}
+              {showMore &&
+                extraProjects?.map((project, i) => (
+                  <ProjectLink key={project.id} project={project} />
+                ))}
+            </div>
+          );
+        }}
+      </InView>
+
       {extraProjects && extraProjects?.length > 0 && (
         <button
           onClick={() => setShowMore(!showMore)}
@@ -97,3 +89,39 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
+
+interface ProjectLinkProps {
+  project: ProjectData;
+  style?: CSSProperties;
+  className?: string;
+}
+
+const ProjectLink = (props: ProjectLinkProps) => {
+  const [hover, setHover] = useState(false);
+  const project = props.project;
+
+  return (
+    <div
+      className={`${styles.project_container} ${props.className}`}
+      style={props.style}
+    >
+      <Link
+        to={`/project/${project.title
+          .match(/\w+/g)
+          ?.join("-")
+          .toLocaleLowerCase()}`}
+        aria-label={project.title}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        className={styles.image_button}
+      >
+        {hover && <h2>SEE MORE</h2>}
+        <img src={project.mainMediaUrl} alt={`${project.title} demo`} />
+      </Link>
+      <div className={styles.spread_row}>
+        <h2>{project.title.toLocaleUpperCase()}</h2>
+        <ReactMarkdown>{project.shortDescription}</ReactMarkdown>
+      </div>
+    </div>
+  );
+};

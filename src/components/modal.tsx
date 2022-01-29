@@ -21,6 +21,26 @@ const Modal: React.FC<ModalProps> = (props) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
+  const handleOutsideElementClick = (ev: MouseEvent) => {
+    if (
+      contentRef.current &&
+      props.onCloseClick &&
+      !contentRef.current.contains(ev.target as Node)
+    ) {
+      props.onCloseClick();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideElementClick);
+
+    return () =>
+      document.removeEventListener("mousedown", handleOutsideElementClick);
+  }, []);
+
+  /**
+   * Make sure focus is trapped in modal
+   */
   type TrapFocusEvent = { onClose: () => void };
   const trapFocus = (el: HTMLElement): TrapFocusEvent => {
     const tabbableElements = Array.from(

@@ -1,4 +1,11 @@
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import {
+  CSSProperties,
+  memo,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./project-details.module.css";
 import { DataContext, ProjectData } from "./services/data.provider";
@@ -22,7 +29,6 @@ const ProjectDetailsPage = () => {
 
   const firstMedia = projectDetail?.mediaUrls?.at(0);
   const secondMedia = projectDetail?.mediaUrls?.at(1);
-  const thirdMedia = projectDetail?.mediaUrls?.at(2);
 
   const onLoad = () => {
     onToggleLoader(false);
@@ -49,27 +55,34 @@ const ProjectDetailsPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, dataContext.projects]);
 
-  const ImageButton = (props: {
-    url: string;
-    alt: string;
-    onClick: () => void;
-    style?: CSSProperties;
-  }) => {
-    const [hover, setHover] = useState(false);
+  const imageButtonClickHandler = useCallback((url: string) => {
+    setOpenModal(true);
+    setImage(url);
+  }, []);
 
-    return (
-      <button
-        className={styles.image_button}
-        onClick={props.onClick}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        style={props.style}
-      >
-        {hover && <h2>EXPAND</h2>}
-        <img src={props.url} alt={props.alt} />
-      </button>
-    );
-  };
+  const ImageButton = memo(
+    (props: {
+      url: string;
+      alt: string;
+      onClick: (url: string) => void;
+      style?: CSSProperties;
+    }) => {
+      const [hover, setHover] = useState(false);
+
+      return (
+        <button
+          className={styles.image_button}
+          onClick={() => props.onClick(props.url)}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          style={props.style}
+        >
+          {hover && <h2>EXPAND</h2>}
+          <img src={props.url} alt={props.alt} />
+        </button>
+      );
+    }
+  );
 
   return (
     <div onLoad={onLoad} className="body">
@@ -109,10 +122,7 @@ const ProjectDetailsPage = () => {
               {projectDetail?.mainMediaUrl && (
                 <ImageButton
                   key={projectDetail?.mainMediaUrl}
-                  onClick={() => {
-                    setOpenModal(true);
-                    setImage(projectDetail?.mainMediaUrl);
-                  }}
+                  onClick={imageButtonClickHandler}
                   url={projectDetail?.mainMediaUrl}
                   alt="main media"
                 />
@@ -146,7 +156,7 @@ const ProjectDetailsPage = () => {
 
           <section>
             {projectDetail?.purposeAndGoal && (
-              <InView triggerOnce delay={1}>
+              <InView triggerOnce threshold={0.5}>
                 {({ inView, ref }) => (
                   <div
                     ref={ref}
@@ -161,10 +171,7 @@ const ProjectDetailsPage = () => {
                       {firstMedia && (
                         <ImageButton
                           key={firstMedia}
-                          onClick={() => {
-                            setOpenModal(true);
-                            setImage(firstMedia);
-                          }}
+                          onClick={imageButtonClickHandler}
                           url={firstMedia}
                           alt="second media"
                           style={{ float: "right" }}
@@ -179,7 +186,7 @@ const ProjectDetailsPage = () => {
               </InView>
             )}
             {projectDetail?.problems && (
-              <InView triggerOnce>
+              <InView triggerOnce threshold={0.5}>
                 {({ inView, ref }) => (
                   <div
                     ref={ref}
@@ -192,10 +199,7 @@ const ProjectDetailsPage = () => {
                       {secondMedia && (
                         <ImageButton
                           key={secondMedia}
-                          onClick={() => {
-                            setOpenModal(true);
-                            setImage(secondMedia);
-                          }}
+                          onClick={imageButtonClickHandler}
                           url={secondMedia}
                           alt="third media"
                           style={{ marginRight: "2rem" }}
@@ -211,7 +215,7 @@ const ProjectDetailsPage = () => {
             )}
           </section>
           {projectDetail?.lessonsLearned && (
-            <InView triggerOnce>
+            <InView triggerOnce threshold={0.5}>
               {({ inView, ref }) => (
                 <div
                   ref={ref}
@@ -230,32 +234,35 @@ const ProjectDetailsPage = () => {
 
           {projectDetail?.mediaUrls && projectDetail?.mediaUrls.length > 0 && (
             <section className={styles.gallery}>
-              <div className={styles.gallery_images}>
-                <div>
-                  <h3>GALLERY</h3>
-                </div>
-                {projectDetail.mainMediaUrl && (
-                  <ImageButton
-                    onClick={() => {
-                      setOpenModal(true);
-                      setImage(projectDetail.mainMediaUrl);
-                    }}
-                    url={projectDetail.mainMediaUrl}
-                    alt="main media"
-                  />
-                )}
-                {projectDetail?.mediaUrls.map((url, i) => (
-                  <ImageButton
-                    key={url}
-                    onClick={() => {
-                      setOpenModal(true);
-                      setImage(url);
-                    }}
-                    url={url}
-                    alt={i + " media"}
-                  />
-                ))}
+              <div>
+                <h3>GALLERY</h3>
               </div>
+              <InView triggerOnce threshold={0.4}>
+                {({ inView, ref }) => (
+                  <div
+                    ref={ref}
+                    className={`${styles.gallery_images} ${
+                      inView ? "visual-show" : "visual-hide"
+                    }`}
+                  >
+                    {projectDetail.mainMediaUrl && (
+                      <ImageButton
+                        onClick={imageButtonClickHandler}
+                        url={projectDetail.mainMediaUrl}
+                        alt="main gallery media"
+                      />
+                    )}
+                    {projectDetail?.mediaUrls?.map((url, i) => (
+                      <ImageButton
+                        key={url}
+                        onClick={imageButtonClickHandler}
+                        url={url}
+                        alt={i + " gallery media"}
+                      />
+                    ))}
+                  </div>
+                )}
+              </InView>
             </section>
           )}
         </div>

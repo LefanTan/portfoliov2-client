@@ -17,6 +17,7 @@
 
 .section > div {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-items: center;
   align-items: start;
@@ -54,6 +55,20 @@
   flex-direction: column;
   position: relative;
   padding: var(--padding);
+  opacity: 0;
+}
+
+.stagger_animation {
+  animation: fadein 0.5s linear calc(var(--animation-order) * 200ms) forwards;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .image_button {
