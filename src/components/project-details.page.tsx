@@ -27,8 +27,8 @@ const ProjectDetailsPage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [isInitLoad, setInitLoad] = useState(true);
 
-  const firstMedia = projectDetail?.mediaUrls?.at(0);
-  const secondMedia = projectDetail?.mediaUrls?.at(1);
+  const firstMedia = projectDetail?.mediaUrls?.[0];
+  const secondMedia = projectDetail?.mediaUrls?.[1];
 
   const onLoad = () => {
     onToggleLoader(false);
@@ -128,7 +128,7 @@ const ProjectDetailsPage = () => {
                 />
               )}
               <ReactMarkdown components={{ p: "h1" }}>
-                {projectDetail?.description?.at(0) || ""}
+                {projectDetail?.description?.[0] || ""}
               </ReactMarkdown>
               <ReactMarkdown>
                 {projectDetail?.description?.slice(1) || ""}

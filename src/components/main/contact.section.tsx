@@ -70,10 +70,7 @@ const ContactSection = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FaLinkedinIn
-                    style={{ marginBottom: "2px" }}
-                    size={`2.5rem`}
-                  />
+                  <FaLinkedinIn style={{ marginBottom: "2px" }} size={30} />
                   {mobile ? "" : "LinkedIn"}
                 </a>
                 <a
@@ -83,7 +80,7 @@ const ContactSection = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FaGithubAlt size={`2.5rem`} /> {mobile ? "" : "Github"}
+                  <FaGithubAlt size={30} /> {mobile ? "" : "Github"}
                 </a>
                 <a
                   href={dataContext.profile?.resumeUrl}
@@ -92,10 +89,7 @@ const ContactSection = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FaRegFilePdf
-                    size={`2.5rem`}
-                    style={{ marginBottom: "5px" }}
-                  />
+                  <FaRegFilePdf size={30} style={{ marginBottom: "5px" }} />
                   {mobile ? "" : "Resume"}
                 </a>
               </address>

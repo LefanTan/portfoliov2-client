@@ -3,6 +3,7 @@ import styles from "./about.module.css";
 import { DataContext } from "../services/data.provider";
 import rotate_bg from "../../assets/rotating.jpg";
 import ReactMarkdown from "react-markdown";
+import profile_backup from "../../assets/profile_backup.jpeg";
 import cutout from "../../assets/cutout.png";
 import old_texture from "../../assets/old_texture.jpg";
 import { CSSTransition } from "react-transition-group";
@@ -81,7 +82,7 @@ const AboutSection = () => {
               >
                 <div>
                   <img
-                    src={dataContext.profile?.mediaUrls?.at(0) || cutout}
+                    src={dataContext.profile?.mediaUrls?.[0] || cutout}
                     alt="lefan's cool cutout"
                     className={inView ? styles.card_show : styles.card_hide}
                   />
@@ -110,9 +111,13 @@ const AboutSection = () => {
           <div className={styles.line_left} />
 
           <div className={styles.left_article}>
+            ßß
             <h1>ABOUT ME</h1>
             <span className={styles.paragraph}>
-              <img src={dataContext.profile?.mediaUrls?.at(1)} alt="profile" />
+              <img
+                src={dataContext.profile?.mediaUrls?.[1] ?? profile_backup}
+                alt="profile"
+              />
               <ReactMarkdown components={{ p: "h1" }}>
                 {mainContent[0]}
               </ReactMarkdown>
@@ -134,7 +139,7 @@ const AboutSection = () => {
           <div className={styles.right_article}>
             <h2>SKILLS</h2>
             <p>{dataContext.profile?.skills?.join(", ")}</p>
-            <img src={dataContext.profile?.mediaUrls?.at(2)} alt="profile 2" />
+            <img src={dataContext.profile?.mediaUrls?.[2]} alt="profile 2" />
             <button onClick={() => setOpen(false)}>
               EXIT <CgArrowRight size={35} />
             </button>
