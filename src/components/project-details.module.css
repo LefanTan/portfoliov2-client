@@ -104,11 +104,11 @@
   align-items: flex-start;
 }
 
-.description > p {
+.description p {
   display: inline;
 }
 
-.description > h1 {
+.description h1 {
   display: inline-block;
   font-family: "Abhaya Libre", sans-serif;
   font-weight: bold;

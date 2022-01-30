@@ -64,7 +64,7 @@ const WelcomeSection = () => {
             className={styles.photo}
             style={{ opacity: tvOn ? 0 : 1 }}
           />
-          <div className={styles.circle} />
+          <div className={styles.tv_floor} />
         </div>
       </div>
     </section>

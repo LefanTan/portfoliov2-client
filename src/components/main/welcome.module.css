@@ -46,34 +46,7 @@
 }
 
 .title {
-  align-self: flex-start;
-  font-size: max(8vmax, 4rem);
-  color: white;
-  text-shadow: 7px 7px var(--shadow);
-
-  position: relative;
-}
-
-.title:before {
-  content: "";
-  display: block;
-
-  position: absolute;
-  width: 100%;
-  left: 3px;
-  bottom: -5px;
-  border-bottom: 2px solid var(--beige);
-}
-
-.title:after {
-  content: "";
-  display: block;
-
-  position: absolute;
-  width: 100%;
-  left: 3px;
-  bottom: -15px;
-  border-bottom: 2px dotted var(--beige);
+  composes: title from "../../index.css";
 }
 
 .welcome_container > p {
@@ -147,7 +120,7 @@
   filter: contrast(1.2) grayscale(0.5);
 }
 
-.circle {
+.tv_floor {
   background-image: url("../../assets/paper.png");
   background-size: fill;
 
@@ -233,7 +206,7 @@
     height: 200px;
   }
 
-  .circle {
+  .tv_floor {
     bottom: calc(50% - 175px);
 
     width: 400px;
@@ -274,7 +247,7 @@
     margin-top: 25px;
   }
 
-  .circle {
+  .tv_floor {
     bottom: 5%;
   }
 }

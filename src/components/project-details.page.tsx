@@ -97,6 +97,7 @@ const ProjectDetailsPage = () => {
           <img src={modalImage} alt="selected media" />
         </div>
       </Modal>
+
       <main className={styles.main}>
         <img
           src={old_texture}

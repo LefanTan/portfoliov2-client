@@ -66,6 +66,36 @@ button {
   display: none;
 }
 
+.title {
+  font-size: max(8vmax, 4rem);
+  color: white;
+  text-shadow: 7px 7px var(--shadow);
+
+  position: relative;
+}
+
+.title:before {
+  content: "";
+  display: block;
+
+  position: absolute;
+  width: 100%;
+  left: 3px;
+  bottom: -5px;
+  border-bottom: 2px solid var(--beige);
+}
+
+.title:after {
+  content: "";
+  display: block;
+
+  position: absolute;
+  width: 100%;
+  left: 3px;
+  bottom: -15px;
+  border-bottom: 2px dotted var(--beige);
+}
+
 *:focus:not(:focus-visible) {
   outline: none;
 }

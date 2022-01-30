@@ -67,14 +67,14 @@ const AboutSection = () => {
           exitActive: styles.opacity_exit_active,
         }}
       >
-        <div className={styles.main_container}>
+        <div className={styles.init_container}>
           <img
             src={rotate_bg}
             alt="rotating background"
             className={styles.rotate_background}
           />
           <InView triggerOnce rootMargin="-30% 0px">
-            {({ inView, ref, entry }) => (
+            {({ inView, ref }) => (
               <button
                 ref={ref}
                 className={styles.cutout_button}
@@ -111,7 +111,6 @@ const AboutSection = () => {
           <div className={styles.line_left} />
 
           <div className={styles.left_article}>
-            ßß
             <h1>ABOUT ME</h1>
             <span className={styles.paragraph}>
               <img
