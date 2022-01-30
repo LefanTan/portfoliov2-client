@@ -227,7 +227,6 @@
   }
 
   .content > .welcome_container {
-    margin-top: 1rem;
     width: 100%;
   }
 
@@ -249,5 +248,37 @@
 
   .tv_floor {
     bottom: 5%;
+  }
+}
+
+@media (max-width: 400px) {
+  .tv {
+    top: calc(50% - 75px);
+    width: 300px;
+  }
+
+  .photo {
+    left: calc(50% - 30px);
+    top: calc(50% - 35px);
+    width: 175px;
+    height: 140px;
+  }
+
+  .tv_floor {
+    bottom: calc(50% - 100px);
+
+    width: 300px;
+    height: 75px;
+  }
+
+  .tv_container > button {
+    width: 30px;
+    height: 30px;
+    left: calc(50% + 73px);
+    top: calc(50% - 95px);
+  }
+
+  .section .tv_container {
+    margin-top: -80px;
   }
 }

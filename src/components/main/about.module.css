@@ -93,18 +93,18 @@
   animation: move 5s linear 0.5s infinite;
 }
 
-.cutout_button > div {
+.cutout_button div {
+  height: 100%;
   transition: 100ms;
+}
+
+.cutout_button img {
   height: 100%;
 }
 
-.cutout_button > div:hover {
+.cutout_button div:hover {
   filter: grayscale(1);
   transform: scale(0.9) translateY(5%);
-}
-
-.cutout_button > div > img {
-  height: 100%;
 }
 
 @keyframes move {
@@ -235,11 +235,6 @@
 @media (max-width: 700px) {
   .news_container {
     flex-wrap: wrap;
-  }
-
-  .cutout_button {
-    bottom: -10%;
-    height: 90%;
   }
 
   .left_article {

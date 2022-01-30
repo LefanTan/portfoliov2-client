@@ -107,13 +107,13 @@ nav ul {
 }
 
 .title img {
-  width: 125px;
+  width: 7.5rem;
   transition: 200ms;
   object-fit: contain;
 }
 
 .title img:hover {
-  width: 140px;
+  transform: scale(1.1);
 }
 
 .title:focus {
@@ -127,6 +127,11 @@ nav ul {
 }
 
 @media (max-width: 700px) {
+  .header {
+    --header-height: 4rem;
+    padding: 0rem 0.75rem;
+  }
+
   .menu_active {
     right: 0px;
   }
@@ -138,6 +143,14 @@ nav ul {
 
   ul > li {
     margin-bottom: 1rem;
+  }
+
+  .title {
+    top: 30px;
+  }
+
+  .title img {
+    width: 6rem;
   }
 
   .side_nav {
