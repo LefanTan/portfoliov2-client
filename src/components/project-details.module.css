@@ -271,8 +271,6 @@
   margin-right: 1rem;
   margin-top: 1rem;
   background-color: transparent;
-
-  height: 35vh;
 }
 
 .image_button {
@@ -300,9 +298,9 @@
   opacity: 0.7;
 }
 
-.image_button > img {
-  height: 100%;
-  width: 100%;
+.image_button img {
+  height: 35vh;
+  max-width: 100%;
   object-fit: contain;
   border: 3px solid var(--beige);
 }
@@ -397,5 +395,10 @@
 
   .gallery_images > button {
     height: auto;
+  }
+
+  .image_button img {
+    height: auto;
+    width: 100%;
   }
 }

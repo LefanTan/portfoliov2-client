@@ -92,7 +92,7 @@
   z-index: 2;
   height: 100%;
 
-  animation: move 5s linear infinite;
+  animation: move 5s linear 0.5s infinite;
 }
 
 .cutout_button > div {

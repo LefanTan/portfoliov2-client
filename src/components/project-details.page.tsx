@@ -237,7 +237,7 @@ const ProjectDetailsPage = () => {
               <div>
                 <h3>GALLERY</h3>
               </div>
-              <InView triggerOnce threshold={0.4}>
+              <InView triggerOnce threshold={0.15}>
                 {({ inView, ref }) => (
                   <div
                     ref={ref}

@@ -55,7 +55,7 @@ const ProjectsSection = () => {
         style={{ opacity: 0.15 }}
       />
       <h1 className={styles.title}>PROJECTS</h1>
-      <InView triggerOnce threshold={0.3}>
+      <InView triggerOnce threshold={0.2}>
         {({ inView, ref }) => {
           return (
             <div ref={ref}>
@@ -69,7 +69,16 @@ const ProjectsSection = () => {
               ))}
               {showMore &&
                 extraProjects?.map((project, i) => (
-                  <ProjectLink key={project.id} project={project} />
+                  <ProjectLink
+                    key={project.id}
+                    project={project}
+                    className={inView ? styles.stagger_animation : ""}
+                    style={
+                      {
+                        "--animation-order": i,
+                      } as CSSProperties
+                    }
+                  />
                 ))}
             </div>
           );
@@ -117,6 +126,8 @@ const ProjectLink = (props: ProjectLinkProps) => {
       >
         {hover && <h2>SEE MORE</h2>}
         <img src={project.mainMediaUrl} alt={`${project.title} demo`} />
+        {/* <div>
+        </div> */}
       </Link>
       <div className={styles.spread_row}>
         <h2>{project.title.toLocaleUpperCase()}</h2>
