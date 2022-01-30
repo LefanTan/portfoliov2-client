@@ -156,7 +156,7 @@ const ProjectDetailsPage = () => {
 
           <section>
             {projectDetail?.purposeAndGoal && (
-              <InView triggerOnce threshold={0.5}>
+              <InView triggerOnce threshold={0.25}>
                 {({ inView, ref }) => (
                   <div
                     ref={ref}
@@ -186,7 +186,7 @@ const ProjectDetailsPage = () => {
               </InView>
             )}
             {projectDetail?.problems && (
-              <InView triggerOnce threshold={0.5}>
+              <InView triggerOnce threshold={0.25}>
                 {({ inView, ref }) => (
                   <div
                     ref={ref}
@@ -215,7 +215,7 @@ const ProjectDetailsPage = () => {
             )}
           </section>
           {projectDetail?.lessonsLearned && (
-            <InView triggerOnce threshold={0.5}>
+            <InView triggerOnce threshold={0.25}>
               {({ inView, ref }) => (
                 <div
                   ref={ref}

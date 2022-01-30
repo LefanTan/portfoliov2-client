@@ -12,11 +12,18 @@ In terms of design, I tried for the _60's 70's retro vibe_. I recently saw a pac
 
 So I gave my best to design it, with wireframes and figma as prototyping and all. And the end result I think its.... interesting, so definitely check it out!
 
+PS: You can click on the TV's buttons
+
 ## Things I wanted to achieve
 
-1. Clean html/css code? (let me know if it is lol)
+1. Clean html/css code? (let me know if it isn't)
 2. Integrates an [API](https://github.com/LefanTan/portfoliov2-server) that I made to query my portfolio data
 3. Responsiveness
 4. Accessbility
 
 ## Key take aways
+
+1. For CSS, I tried using less classNames and used mainly selectors instead, turns out this isn't very sustainable as CSS will be messed up when you make changes to your HTML etc.
+2. I learned some interesting loading screen technique.
+   - Have a Loading div sibling to #root that you can toggle whenever you need to display loading screen
+   - use window.onload + document.fonts.ready callback

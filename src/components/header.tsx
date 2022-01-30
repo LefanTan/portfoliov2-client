@@ -57,7 +57,7 @@ const Header = () => {
         "a[href]:not([disabled]), button:not([disabled])"
       )
     );
-    (elements.at(0) as HTMLElement).focus();
+    (elements?.[0] as HTMLElement).focus();
 
     const handleFocus = (e: FocusEvent) => {
       e.preventDefault();

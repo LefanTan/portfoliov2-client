@@ -47,7 +47,7 @@
 
 .title {
   align-self: flex-start;
-  font-size: max(8vmax, 5rem);
+  font-size: max(8vmax, 4rem);
   color: white;
   text-shadow: 7px 7px var(--shadow);
 
@@ -254,6 +254,7 @@
   }
 
   .content > .welcome_container {
+    margin-top: 1rem;
     width: 100%;
   }
 
@@ -274,6 +275,6 @@
   }
 
   .circle {
-    bottom: 10%;
+    bottom: 5%;
   }
 }

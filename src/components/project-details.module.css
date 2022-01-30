@@ -123,7 +123,8 @@
 }
 
 .description .image_button > img {
-  max-height: 25rem;
+  width: 100%;
+  height: 100%;
 }
 
 .stack_links_container {
@@ -399,6 +400,6 @@
 
   .image_button img {
     height: auto;
-    width: 100%;
+    max-width: 100%;
   }
 }
