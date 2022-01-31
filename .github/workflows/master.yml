@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: "16.13.2"
       - run: npm install
-      - run: npm run predeploy
+      - run: npm run deploy
         env:
           REACT_APP_MANAGER_API_KEY: ${{ secrets.REACT_APP_MANAGER_API_KEY }}
           REACT_APP_EMAIL_SERVICE_ID: ${{ secrets.REACT_APP_EMAIL_SERVICE_ID }}
@@ -23,4 +23,3 @@ jobs:
           REACT_APP_EMAIL_TEMPLATE_ID: ${{ secrets.REACT_APP_EMAIL_TEMPLATE_ID }}
           GENERATE_SOURCEMAP: false
           CI: false
-      - run: npm run deploy
