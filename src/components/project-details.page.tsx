@@ -101,8 +101,9 @@ const ProjectDetailsPage = () => {
       <main className={styles.main}>
         <img
           src={old_texture}
-          className={styles.old_texture}
+          className="old-texture"
           alt="old texture"
+          style={{ opacity: 0.3 }}
         />
 
         <div className={styles.content}>
