@@ -5,12 +5,23 @@ import noise from "../../assets/tv_noise.gif";
 import nosie_gif from "../../assets/loading_anim.gif";
 import dot from "../../assets/pattern.png";
 import old_texture from "../../assets/old_texture.jpg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../services/data.provider";
+import random_video from "../services/random-video";
 
 const WelcomeSection = () => {
-  const [tvOn, setTvOn] = useState(false);
+  const [showProfilePic, setShowProfilePic] = useState(false);
+  const [playRandomVideo, setPlayRandomVideo] = useState(false);
+  const [randomVideoIndex, setRandVidIndex] = useState(0);
   const dataContext = useContext(DataContext);
+
+  useEffect(() => {
+    let newIndex = Math.floor(Math.random() * random_video.length);
+    // Try again if same video is loaded
+    if (newIndex === randomVideoIndex)
+      newIndex = Math.floor(Math.random() * random_video.length);
+    setRandVidIndex(Math.floor(Math.random() * random_video.length));
+  }, [playRandomVideo, randomVideoIndex]);
 
   return (
     <section id="home" className={styles.section}>
@@ -41,28 +52,56 @@ const WelcomeSection = () => {
         <div className={styles.tv_container}>
           <img src={dot} alt="dot background" className={styles.dot} />
           <button
-            onClick={() => setTvOn(!tvOn)}
-            aria-label="tv switch"
-            aria-pressed={tvOn}
-            className={tvOn ? styles.rotate : ""}
+            onClick={() => {
+              setShowProfilePic(!showProfilePic);
+              setPlayRandomVideo(false);
+            }}
+            aria-label="first tv switch"
+            aria-pressed={showProfilePic}
+            className={`${styles.switch} ${
+              showProfilePic ? styles.rotate : ""
+            }`}
+          />
+          <button
+            onClick={() => {
+              setPlayRandomVideo(!playRandomVideo);
+              setShowProfilePic(false);
+            }}
+            aria-label="second tv switch"
+            aria-pressed={playRandomVideo}
+            className={`${styles.switch_2} ${
+              playRandomVideo ? styles.rotate : ""
+            }`}
           />
           <img alt="tv" src={tv} className={styles.tv} />
           <img
             alt="face"
             src={dataContext.profile?.mainMediaUrl ?? photo}
             className={styles.photo}
+            style={{ visibility: showProfilePic ? "visible" : "hidden" }}
           />
+          <div>
+            <iframe
+              src={random_video[randomVideoIndex].link}
+              className={styles.video}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; picture-in-picture"
+              allowFullScreen
+              style={{ visibility: playRandomVideo ? "visible" : "hidden" }}
+            ></iframe>
+          </div>
+
           <img
             alt="noise gif"
             src={noise}
             className={styles.photo}
-            style={{ opacity: tvOn ? 0.45 : 1 }}
+            style={{ opacity: showProfilePic || playRandomVideo ? 0.45 : 1 }}
           />
           <img
             alt="noise gif"
             src={nosie_gif}
             className={styles.photo}
-            style={{ opacity: tvOn ? 0 : 1 }}
+            style={{ opacity: showProfilePic || playRandomVideo ? 0 : 1 }}
           />
           <div className={styles.tv_floor} />
         </div>

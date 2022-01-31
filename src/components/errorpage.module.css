@@ -19,6 +19,7 @@
 
 .main > p {
   color: var(--beige);
+  font-weight: bolder;
   font-size: 1.4rem;
 
   margin-top: 1rem;

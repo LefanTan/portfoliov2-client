@@ -9,20 +9,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: "16.13.2"
-      - run: npm install
-      - run: npm run build
-        env:
-          REACT_APP_MANAGER_API_KEY: ${{ secrets.REACT_APP_MANAGER_API_KEY }}
-          REACT_APP_EMAIL_SERVICE_ID: ${{ secrets.REACT_APP_EMAIL_SERVICE_ID }}
-          REACT_APP_EMAIL_USER_ID: ${{ secrets.REACT_APP_EMAIL_USER_ID }}
-          REACT_APP_EMAIL_TEMPLATE_ID: ${{ secrets.REACT_APP_EMAIL_TEMPLATE_ID }}
-          GENERATE_SOURCEMAP: false
-          CI: false
+      # - name: Setup node
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: "16.13.2"
+      # - run: npm install
+      # - run: npm run build
+      #   env:
+      #     REACT_APP_MANAGER_API_KEY: ${{ secrets.REACT_APP_MANAGER_API_KEY }}
+      #     REACT_APP_EMAIL_SERVICE_ID: ${{ secrets.REACT_APP_EMAIL_SERVICE_ID }}
+      #     REACT_APP_EMAIL_USER_ID: ${{ secrets.REACT_APP_EMAIL_USER_ID }}
+      #     REACT_APP_EMAIL_TEMPLATE_ID: ${{ secrets.REACT_APP_EMAIL_TEMPLATE_ID }}
+      #     GENERATE_SOURCEMAP: false
+      #     CI: false
 
       - name: Deploy to GH Page
         uses: peaceiris/actions-gh-pages@v3

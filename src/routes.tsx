@@ -47,7 +47,7 @@ const AppRoutes = () => {
             <ErrorPage
               errorCode="404"
               header="Page Doesn't Exist"
-              description="Please leave this page immediately"
+              description="The home page is pretty cool though, go back there"
             />
           }
         />
@@ -57,7 +57,7 @@ const AppRoutes = () => {
             <ErrorPage
               errorCode="404"
               header="Page Doesn't Exist"
-              description="Please leave this page immediately"
+              description="The home page is pretty cool though, go back there"
             />
           }
         />

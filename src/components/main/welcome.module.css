@@ -105,7 +105,8 @@
   z-index: 2;
 }
 
-.photo {
+.photo,
+.video {
   position: absolute;
   left: calc(50% - 55px);
   top: 50%;
@@ -113,11 +114,16 @@
   transform: translate(-50%, -50%);
 
   width: 300px;
-  height: 250px;
+  height: 255px;
   z-index: 1;
   object-fit: cover;
 
   filter: contrast(1.2) grayscale(0.5);
+  pointer-events: none;
+}
+
+.video {
+  pointer-events: auto;
 }
 
 .tv_floor {
@@ -137,7 +143,8 @@
   box-shadow: 3px 7px var(--shadow);
 }
 
-.tv_container > button {
+.switch,
+.switch_2 {
   border: none;
   cursor: pointer;
   background-color: transparent;
@@ -153,6 +160,11 @@
   z-index: 3;
   transition: transform 200ms;
   animation: shake 1s linear 0.5s infinite;
+}
+
+.switch_2 {
+  top: calc(50% - 45px);
+  animation: shake 1s linear 0.75s infinite;
 }
 
 .tv_container .rotate {
@@ -213,11 +225,16 @@
     height: 100px;
   }
 
-  .tv_container > button {
+  .switch,
+  .switch_2 {
     width: 45px;
     height: 45px;
     left: calc(50% + 95px);
     top: calc(50% - 80px);
+  }
+
+  .switch_2 {
+    top: calc(50% - 32.5px);
   }
 }
 
@@ -271,11 +288,16 @@
     height: 75px;
   }
 
-  .tv_container > button {
+  .switch,
+  .switch_2 {
     width: 30px;
     height: 30px;
     left: calc(50% + 73px);
     top: calc(50% - 95px);
+  }
+
+  .switch_2 {
+    top: calc(50% - 60px);
   }
 
   .section .tv_container {
