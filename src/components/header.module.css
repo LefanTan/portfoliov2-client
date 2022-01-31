@@ -7,7 +7,7 @@
   box-shadow: 0px 4px 5px #53535362;
 
   transition: transform 200ms;
-  z-index: 6;
+  z-index: 5;
 
   display: flex;
   align-items: center;

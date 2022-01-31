@@ -6,7 +6,6 @@ import { throttle } from "./helpers/lodash";
 import { HashLink } from "react-router-hash-link";
 import useMediaChange from "./helpers/useMediaChange";
 import title from "../assets/title.png";
-import old_texture from "../assets/old_texture.jpg";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -102,7 +101,6 @@ const Header = () => {
           }}
         >
           <nav ref={sideRef} className={`${styles.side_nav}`}>
-            <img src={old_texture} className="old-texture" alt="old texture" />
             <ul onClick={() => setMenu(false)}>
               <button className={styles.cancel_button} aria-label="hide menu">
                 <CgArrowRight size={40} />
@@ -145,12 +143,6 @@ const Header = () => {
         </CSSTransition>
       )}
       <header ref={ref} className={styles.header}>
-        <img
-          src={old_texture}
-          className="old-texture"
-          alt="old pattern"
-          style={{ zIndex: 8, opacity: 0.2 }}
-        />
         <button
           onClick={() => setBW(!blackAndWhite)}
           aria-label="switch"

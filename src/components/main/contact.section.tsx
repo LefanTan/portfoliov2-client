@@ -6,7 +6,6 @@ import { DataContext } from "../services/data.provider";
 import emailjs from "@emailjs/browser";
 import { RiCloseFill } from "react-icons/ri";
 import useMediaChange from "../helpers/useMediaChange";
-import old_texture from "../../assets/old_texture.jpg";
 import Modal from "../modal";
 import InView from "react-intersection-observer";
 
@@ -51,7 +50,6 @@ const ContactSection = () => {
           <p>I'll be sure to get back to you as soon as possible</p>
         </div>
       </Modal>
-      <img src={old_texture} className="old-texture" alt="old texture" />
       <InView triggerOnce threshold={0.3}>
         {({ inView, ref }) => (
           <div

@@ -4,7 +4,6 @@ import photo from "../../assets/tv_photo.jpg";
 import noise from "../../assets/tv_noise.gif";
 import nosie_gif from "../../assets/loading_anim.gif";
 import dot from "../../assets/pattern.png";
-import old_texture from "../../assets/old_texture.jpg";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../services/data.provider";
 import random_video from "../services/random-video";
@@ -25,8 +24,6 @@ const WelcomeSection = () => {
 
   return (
     <section id="home" className={styles.section}>
-      <img src={old_texture} className="old-texture" alt="old texture" />
-
       <div className={styles.content}>
         <div className={styles.welcome_container}>
           <h1 className={styles.title}>WELCOME</h1>

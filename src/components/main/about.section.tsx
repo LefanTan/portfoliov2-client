@@ -5,7 +5,6 @@ import rotate_bg from "../../assets/rotating.jpg";
 import ReactMarkdown from "react-markdown";
 import profile_backup from "../../assets/profile_backup.jpeg";
 import cutout from "../../assets/cutout.png";
-import old_texture from "../../assets/old_texture.jpg";
 import { CSSTransition } from "react-transition-group";
 import { CgArrowRight } from "react-icons/cg";
 import InView from "react-intersection-observer";
@@ -54,7 +53,6 @@ const AboutSection = () => {
 
   return (
     <section ref={ref} id="about" className={styles.section}>
-      <img src={old_texture} className="old-texture flipX" alt="old texture" />
       <CSSTransition
         appear
         in={!openMore}

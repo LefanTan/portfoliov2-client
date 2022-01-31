@@ -1,7 +1,5 @@
 # Portfolio V2
 
-### PS: IN PROGRESS
-
 **Second version of my portfolio website!**
 
 Well, I really didn't like the first iteration of my website, I think it's super weird and clunky and non-responsive, so here's a second version of it 😎
