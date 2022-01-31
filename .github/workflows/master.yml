@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: "16.13.2"
       - run: npm install
-      - run: npm run deploy
+      - run: npm run build
         env:
           REACT_APP_MANAGER_API_KEY: ${{ secrets.REACT_APP_MANAGER_API_KEY }}
           REACT_APP_EMAIL_SERVICE_ID: ${{ secrets.REACT_APP_EMAIL_SERVICE_ID }}
@@ -23,3 +23,9 @@ jobs:
           REACT_APP_EMAIL_TEMPLATE_ID: ${{ secrets.REACT_APP_EMAIL_TEMPLATE_ID }}
           GENERATE_SOURCEMAP: false
           CI: false
+
+      - name: Deploy to GH Page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
