@@ -83,11 +83,14 @@ const WelcomeSection = () => {
           <div>
             <iframe
               src={random_video[randomVideoIndex].link}
-              className={styles.video}
+              className={styles.photo}
               title="YouTube video player"
               allow="accelerometer; autoplay; picture-in-picture"
               allowFullScreen
-              style={{ visibility: playRandomVideo ? "visible" : "hidden" }}
+              style={{
+                visibility: playRandomVideo ? "visible" : "hidden",
+                pointerEvents: "auto",
+              }}
             ></iframe>
           </div>
 

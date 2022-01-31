@@ -105,8 +105,7 @@
   z-index: 2;
 }
 
-.photo,
-.video {
+.photo {
   position: absolute;
   left: calc(50% - 55px);
   top: 50%;
@@ -120,10 +119,6 @@
 
   filter: contrast(1.2) grayscale(0.5);
   pointer-events: none;
-}
-
-.video {
-  pointer-events: auto;
 }
 
 .tv_floor {
