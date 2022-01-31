@@ -46,7 +46,7 @@ const Header = () => {
     }
 
     prevScrollY = window.scrollY;
-  }, 50);
+  }, 10);
 
   useEffect(() => {
     if (!sideRef.current) return;
