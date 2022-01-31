@@ -44,7 +44,7 @@ const ContactSection = () => {
       >
         <div className={styles.modal_content}>
           <button onClick={() => setOpenModal(false)}>
-            <RiCloseFill size={20} />
+            <RiCloseFill aria-label="close modal button" size={20} />
           </button>
           <h1>Thank you for the email!</h1>
           <p>I'll be sure to get back to you as soon as possible</p>

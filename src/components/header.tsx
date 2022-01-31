@@ -145,7 +145,9 @@ const Header = () => {
       <header ref={ref} className={styles.header}>
         <button
           onClick={() => setBW(!blackAndWhite)}
-          aria-label="switch"
+          aria-label="dark mode switch"
+          role="checkbox"
+          aria-checked={blackAndWhite}
           className={`${styles.light_switch} ${
             blackAndWhite ? styles.light_switch_active : ""
           }`}
@@ -170,7 +172,7 @@ const Header = () => {
               </li>
               <li>
                 <HashLink to="/#home" replace className={styles.title}>
-                  <img src={title} alt="title" />
+                  <img src={title} alt="home" />
                 </HashLink>
               </li>
               <li>

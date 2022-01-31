@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import styles from "./modal.module.css";
 import { RiCloseFill } from "react-icons/ri";
 
@@ -21,28 +21,31 @@ const Modal: React.FC<ModalProps> = (props) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
-  const handleOutsideElementClick = (ev: MouseEvent) => {
-    if (
-      contentRef.current &&
-      props.onCloseClick &&
-      !contentRef.current.contains(ev.target as Node)
-    ) {
-      props.onCloseClick();
-    }
-  };
+  const handleOutsideElementClick = useCallback(
+    (ev: MouseEvent) => {
+      if (
+        contentRef.current &&
+        props.onCloseClick &&
+        !contentRef.current.contains(ev.target as Node)
+      ) {
+        props.onCloseClick();
+      }
+    },
+    [props]
+  );
 
   useEffect(() => {
     document.addEventListener("mousedown", handleOutsideElementClick);
 
     return () =>
       document.removeEventListener("mousedown", handleOutsideElementClick);
-  }, []);
+  }, [handleOutsideElementClick]);
 
   /**
    * Make sure focus is trapped in modal
    */
   type TrapFocusEvent = { onClose: () => void };
-  const trapFocus = (el: HTMLElement): TrapFocusEvent => {
+  const trapFocus = useCallback((el: HTMLElement): TrapFocusEvent => {
     const tabbableElements = Array.from(
       el.querySelectorAll(
         'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
@@ -68,7 +71,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         document.removeEventListener("focus", handleFocus, true);
       },
     };
-  };
+  }, []);
 
   useEffect(() => {
     // Disable scrolling of background elements when modal is open
@@ -79,7 +82,7 @@ const Modal: React.FC<ModalProps> = (props) => {
       if (props.isOpen) trapped = trapFocus(dialogRef.current);
       else trapped?.onClose();
     }
-  }, [props.isOpen]);
+  }, [props.isOpen, trapFocus]);
 
   return (
     <dialog
@@ -95,7 +98,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         onClick={props.onCloseClick}
         className={styles.close_button}
       >
-        <RiCloseFill size={30} />
+        <RiCloseFill aria-label="close modal button" size={30} />
       </button>
       <div ref={contentRef} className={styles.content}>
         <div id="modalDescription" className={styles.hidden}>
