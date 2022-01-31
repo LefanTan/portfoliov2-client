@@ -25,3 +25,4 @@ PS: You can click on the TV's buttons
 2. I learned some interesting loading screen technique.
    - Have a Loading div sibling to #root that you can toggle whenever you need to display loading screen
    - use window.onload + document.fonts.ready callback
+3. Designing a template can be tricky 
