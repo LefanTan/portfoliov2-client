@@ -52,15 +52,17 @@ nav ul {
   transform: rotateZ(180deg);
 }
 
-.header > button:last-of-type {
+.menu_button {
   border: none;
   color: var(--red);
   background-color: transparent;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 200ms;
 }
 
-.header > button:last-of-type:active {
+.menu_button:active {
   filter: brightness(0.5);
 }
 

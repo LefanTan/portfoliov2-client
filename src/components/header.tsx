@@ -196,7 +196,11 @@ const Header = () => {
             <HashLink to="/#home" replace className={styles.title}>
               <img src={title} alt="title" />
             </HashLink>
-            <button onClick={() => setMenu(!menu)} aria-label="side menu">
+            <button
+              onClick={() => setMenu(!menu)}
+              className={styles.menu_button}
+              aria-label="side menu"
+            >
               <CgMenuGridO size={30} />
             </button>
           </>
