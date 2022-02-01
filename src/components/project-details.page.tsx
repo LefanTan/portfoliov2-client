@@ -16,6 +16,7 @@ import Header from "./header";
 import Footer from "./footer";
 import Modal from "./modal";
 import InView from "react-intersection-observer";
+import useMediaChange from "./helpers/useMediaChange";
 
 const ProjectDetailsPage = () => {
   const params = useParams();
@@ -23,6 +24,7 @@ const ProjectDetailsPage = () => {
 
   const dataContext = useContext(DataContext);
   const [projectDetail, setDetail] = useState<ProjectData>();
+  const matched = useMediaChange("(max-width: 700px)");
   const [modalImage, setImage] = useState<string>();
   const [openModal, setOpenModal] = useState(false);
   const [isInitLoad, setInitLoad] = useState(true);
@@ -198,15 +200,25 @@ const ProjectDetailsPage = () => {
                   >
                     <span>
                       <h2 className={styles.container_title}>PROBLEMS FACED</h2>
-                      {secondMedia && (
-                        <ImageButton
-                          key={secondMedia}
-                          onClick={imageButtonClickHandler}
-                          url={secondMedia}
-                          alt="third media"
-                          style={{ marginRight: "2rem" }}
-                        />
-                      )}
+                      {!projectDetail.purposeAndGoal
+                        ? firstMedia && (
+                            <ImageButton
+                              key={firstMedia}
+                              onClick={imageButtonClickHandler}
+                              url={firstMedia}
+                              alt="second media"
+                              style={{ marginRight: matched ? "0rem" : "2rem" }}
+                            />
+                          )
+                        : secondMedia && (
+                            <ImageButton
+                              key={secondMedia}
+                              onClick={imageButtonClickHandler}
+                              url={secondMedia}
+                              alt="third media"
+                              style={{ marginRight: matched ? "0rem" : "2rem" }}
+                            />
+                          )}
                       <ReactMarkdown>
                         {projectDetail?.problems || ""}
                       </ReactMarkdown>
