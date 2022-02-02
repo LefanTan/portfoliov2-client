@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 0rem 1rem;
+  padding: 0rem 0.5rem;
 }
 
 .hide {
@@ -87,10 +87,15 @@ nav ul {
   width: 100%;
   height: 3px;
   border-bottom: 3px dotted var(--red);
+  transition: 200ms;
 }
 
 .header_anchor:hover {
   font-size: 1.65rem;
+}
+
+.header_anchor:hover:after {
+  border-bottom: 2px solid var(--red);
 }
 
 .header_anchor:focus {
@@ -109,7 +114,7 @@ nav ul {
 }
 
 .title img {
-  width: 7.5rem;
+  width: 7rem;
   transition: 200ms;
   object-fit: contain;
 }
