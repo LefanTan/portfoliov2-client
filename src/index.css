@@ -107,7 +107,7 @@ button {
 .old-texture {
   pointer-events: none;
   z-index: 5;
-  opacity: 0.15;
+  opacity: 0.225;
 
   top: 0px;
   left: 0px;
