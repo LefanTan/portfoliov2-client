@@ -3,6 +3,7 @@
   background-size: cover;
 
   position: relative;
+  overflow: hidden;
 }
 
 .content {
@@ -230,7 +231,7 @@
   }
 
   .content .forms {
-    margin: 3rem 0rem;
+    margin: 1rem 0rem;
   }
 
   .content .links_container {
@@ -251,10 +252,6 @@
 
   .link > *:first-child {
     margin-right: 0rem;
-  }
-
-  .section .forms {
-    margin: 1rem 0rem;
   }
 }
 

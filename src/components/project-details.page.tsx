@@ -281,7 +281,7 @@ const ProjectDetailsPage = () => {
           )}
         </div>
       </main>
-      <Footer disableTexture />
+      <Footer />
     </div>
   );
 };

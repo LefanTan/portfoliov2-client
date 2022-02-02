@@ -1,5 +1,4 @@
 import styles from "./footer.module.css";
-import old_texture from "../assets/old_texture.jpg";
 import {
   FaLinkedinIn,
   FaGithubAlt,
@@ -9,23 +8,16 @@ import {
 import { useContext } from "react";
 import { DataContext } from "./services/data.provider";
 
-interface FooterProps {
-  disableTexture?: boolean;
-}
-
 /**
  * Old texture will be disabled in Projects Detail
  * Having a prop will be the most ideal but react router v6 doesn't have
  * support for history pathname change events
  */
-const Footer: React.FC<FooterProps> = ({ disableTexture }) => {
+const Footer = () => {
   const dataContext = useContext(DataContext);
 
   return (
     <footer className={styles.footer}>
-      {!disableTexture && (
-        <img src={old_texture} className="old-texture " alt="old texture" />
-      )}
       <div>
         <a
           href={dataContext.profile?.github}
