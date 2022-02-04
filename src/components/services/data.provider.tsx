@@ -53,6 +53,7 @@ export type DataType = {
   user?: UserData;
   profile?: ProfileData;
   projects?: ProjectData[];
+  error?: string;
 };
 
 export const DataContext = createContext<DataType>({} as DataType);
@@ -60,6 +61,7 @@ const DataProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<UserData>();
   const [profile, setProfile] = useState<ProfileData>();
   const [projects, setProjects] = useState<ProjectData[]>();
+  const [error, setError] = useState();
 
   useEffect(() => {
     // Get data from API
@@ -76,13 +78,14 @@ const DataProvider: React.FC = ({ children }) => {
         setProjects(projectRes);
       } catch (err: any) {
         console.error(err);
+        setError(err);
       }
     })();
   }, []);
 
   return (
     <DataContext.Provider
-      value={{ user: user, profile: profile, projects: projects }}
+      value={{ user: user, profile: profile, projects: projects, error: error }}
     >
       {children}
     </DataContext.Provider>

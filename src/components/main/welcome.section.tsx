@@ -90,18 +90,34 @@ const WelcomeSection = () => {
               }}
             ></iframe>
           </div>
+          {dataContext.error && (
+            <div className={styles.error_container}>
+              <h2>408</h2>
+              <p>Error connecting to portfolio API</p>
+            </div>
+          )}
 
           <img
             alt="noise gif"
             src={noise}
             className={styles.photo}
-            style={{ opacity: showProfilePic || playRandomVideo ? 0.45 : 1 }}
+            style={{
+              opacity:
+                showProfilePic || playRandomVideo || dataContext.error
+                  ? 0.45
+                  : 1,
+            }}
           />
           <img
             alt="noise gif"
             src={nosie_gif}
             className={styles.photo}
-            style={{ opacity: showProfilePic || playRandomVideo ? 0 : 1 }}
+            style={{
+              opacity:
+                showProfilePic || playRandomVideo || dataContext.error
+                  ? 0.1
+                  : 1,
+            }}
           />
           <div className={styles.tv_floor} />
         </div>
