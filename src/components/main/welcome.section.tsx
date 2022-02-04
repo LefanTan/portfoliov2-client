@@ -92,7 +92,7 @@ const WelcomeSection = () => {
           </div>
           {dataContext.error && (
             <div className={styles.error_container}>
-              <h2>408</h2>
+              <h2>408 ERROR</h2>
               <p>Error connecting to portfolio API</p>
             </div>
           )}
