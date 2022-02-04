@@ -5,7 +5,7 @@ const axiosInstance = () => {
     throw new Error("API Key doesn't exist!");
   }
   return axios.create({
-    baseURL: "https://api.lefantan2.com/api/",
+    baseURL: "https://api.lefantan.com/api/",
     timeout: 5000,
     timeoutErrorMessage: "Timeout error",
     headers: { Authorization: process.env.REACT_APP_MANAGER_API_KEY || "" },
