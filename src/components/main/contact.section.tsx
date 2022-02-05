@@ -62,7 +62,7 @@ const ContactSection = () => {
               <h1 className={styles.title}>Let's Talk</h1>
               <address>
                 <a
-                  href={dataContext.profile?.linkedin}
+                  href="https://www.linkedin.com/in/lefantan/"
                   className={styles.link}
                   aria-label="linkedin"
                   target="_blank"
@@ -72,7 +72,7 @@ const ContactSection = () => {
                   {mobile ? "" : "LinkedIn"}
                 </a>
                 <a
-                  href={dataContext.profile?.github}
+                  href="https://github.com/LefanTan"
                   className={styles.link}
                   aria-label="github"
                   target="_blank"
