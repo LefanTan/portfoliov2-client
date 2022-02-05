@@ -21,6 +21,12 @@ const WelcomeSection = () => {
   const dataContext = useContext(DataContext);
 
   useEffect(() => {
+    alert(
+      "This website uses an API that needs access to IPV6, if projects doesn't display normally, it might be that your router doesn't allow IPv6"
+    );
+  }, []);
+
+  useEffect(() => {
     let newIndex = Math.floor(Math.random() * random_video.length);
     // Try again if same video is loaded
     if (newIndex === randomVideoIndex)
