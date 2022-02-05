@@ -35,7 +35,7 @@ const WelcomeSection = () => {
           <h1 className={styles.title}>WELCOME</h1>
           <address className={styles.address}>
             <a
-              href={dataContext.profile?.github}
+              href="https://github.com/LefanTan"
               aria-label="github link"
               target="_blank"
               rel="noreferrer"
@@ -43,7 +43,7 @@ const WelcomeSection = () => {
               <FaGithubAlt size={25} />
             </a>
             <a
-              href={dataContext.profile?.linkedin}
+              href="https://www.linkedin.com/in/lefantan/"
               aria-label="linkedin link"
               target="_blank"
               rel="noreferrer"
