@@ -242,6 +242,10 @@
   .left_article {
     max-width: 100%;
   }
+
+  .cutout_button {
+    height: 80%;
+  }
 }
 
 @media (max-width: 500px) {
