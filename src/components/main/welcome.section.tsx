@@ -68,8 +68,8 @@ const WelcomeSection = () => {
             </a>
           </address>
           <p>
-            Hey there! My name is <strong>Jia Hui (Lefan) Tan</strong>, and I
-            like building websites/applications that look good, work well, and
+            Hey there! My name is <i>Jia Hui (Lefan) Tan</i>, and I like
+            building websites/applications that look good, work well, and
             accessible for everyone!
           </p>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
