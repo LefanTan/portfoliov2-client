@@ -7,6 +7,12 @@ import dot from "../../assets/pattern.png";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../services/data.provider";
 import random_video from "../services/random-video";
+import {
+  FaLinkedinIn,
+  FaGithubAlt,
+  FaRegFilePdf,
+  FaEnvelope,
+} from "react-icons/fa";
 
 const WelcomeSection = () => {
   const [showProfilePic, setShowProfilePic] = useState(false);
@@ -121,6 +127,41 @@ const WelcomeSection = () => {
           />
           <div className={styles.tv_floor} />
         </div>
+
+        <address className={styles.address}>
+          <a
+            href={dataContext.profile?.github}
+            aria-label="github link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaGithubAlt size={25} />
+          </a>
+          <a
+            href={dataContext.profile?.linkedin}
+            aria-label="linkedin link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedinIn size={25} />
+          </a>
+          <a
+            href={dataContext.profile?.resumeUrl}
+            aria-label="linkedin link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaRegFilePdf size={25} />
+          </a>
+          <a
+            href={`mailto:${dataContext.user?.email}`}
+            aria-label="linkedin link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaEnvelope size={25} />
+          </a>
+        </address>
       </div>
     </section>
   );

@@ -18,6 +18,7 @@
   width: 100%;
   min-height: 90vh;
   animation: onload 0.5s linear;
+  position: relative;
 }
 
 @keyframes onload {
@@ -220,6 +221,22 @@
 
   width: 125vw;
   transform: translateX(-50%) rotateZ(-40deg);
+}
+
+.address {
+  z-index: 2;
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0px;
+}
+
+.address a {
+  color: var(--beige);
+  margin-right: 0.5rem;
+}
+
+.address a:focus-within {
+  outline: 2px solid var(--beige);
 }
 
 @media (max-width: 1200px) {
