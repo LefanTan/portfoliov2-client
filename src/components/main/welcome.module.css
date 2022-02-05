@@ -48,12 +48,12 @@
 
 .title {
   composes: title from "../../index.css";
+  margin-bottom: 1.5rem;
 }
 
 .welcome_container > p {
   font-family: "Bellota Text", serif;
   font-weight: bold;
-  margin-top: 1.5rem;
   font-size: 1.2rem;
   color: var(--beige);
 }
@@ -141,6 +141,7 @@
 .error_container > p {
   color: var(--beige);
   text-align: center;
+  font-size: 0.9rem;
 }
 
 .tv_floor {
@@ -223,16 +224,19 @@
   transform: translateX(-50%) rotateZ(-40deg);
 }
 
-.address {
-  z-index: 2;
-  position: absolute;
-  left: 0.5rem;
-  bottom: 0px;
-}
-
 .address a {
   color: var(--beige);
   margin-right: 0.5rem;
+  transition: 200ms;
+}
+
+.address a > * {
+  transition: 200ms;
+}
+
+.address a > *:hover {
+  filter: brightness(0.8);
+  transform: scale(1.2);
 }
 
 .address a:focus-within {

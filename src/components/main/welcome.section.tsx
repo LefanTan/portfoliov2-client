@@ -33,6 +33,40 @@ const WelcomeSection = () => {
       <div className={styles.content}>
         <div className={styles.welcome_container}>
           <h1 className={styles.title}>WELCOME</h1>
+          <address className={styles.address}>
+            <a
+              href={dataContext.profile?.github}
+              aria-label="github link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaGithubAlt size={25} />
+            </a>
+            <a
+              href={dataContext.profile?.linkedin}
+              aria-label="linkedin link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedinIn size={25} />
+            </a>
+            <a
+              href={dataContext.profile?.resumeUrl}
+              aria-label="linkedin link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaRegFilePdf size={25} />
+            </a>
+            <a
+              href={`mailto:${dataContext.user?.email}`}
+              aria-label="linkedin link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaEnvelope size={25} />
+            </a>
+          </address>
           <p>
             Hey there! My name is Jia Hui (Lefan) Tan, and I like building
             websites/application that looks good, works well, and accessible for
@@ -100,6 +134,7 @@ const WelcomeSection = () => {
             <div className={styles.error_container}>
               <h2>408 ERROR</h2>
               <p>Error connecting to portfolio API</p>
+              <p>(perhaps your device doesn't support IPV6)</p>
             </div>
           )}
 
@@ -127,41 +162,6 @@ const WelcomeSection = () => {
           />
           <div className={styles.tv_floor} />
         </div>
-
-        <address className={styles.address}>
-          <a
-            href={dataContext.profile?.github}
-            aria-label="github link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithubAlt size={25} />
-          </a>
-          <a
-            href={dataContext.profile?.linkedin}
-            aria-label="linkedin link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaLinkedinIn size={25} />
-          </a>
-          <a
-            href={dataContext.profile?.resumeUrl}
-            aria-label="linkedin link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaRegFilePdf size={25} />
-          </a>
-          <a
-            href={`mailto:${dataContext.user?.email}`}
-            aria-label="linkedin link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaEnvelope size={25} />
-          </a>
-        </address>
       </div>
     </section>
   );
