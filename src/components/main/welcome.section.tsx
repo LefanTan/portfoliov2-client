@@ -21,12 +21,6 @@ const WelcomeSection = () => {
   const dataContext = useContext(DataContext);
 
   useEffect(() => {
-    alert(
-      "This website uses an API that needs access to IPV6, if projects doesn't display normally, it might be that your router doesn't allow IPv6. This will be fixed ASAP"
-    );
-  }, []);
-
-  useEffect(() => {
     let newIndex = Math.floor(Math.random() * random_video.length);
     // Try again if same video is loaded
     if (newIndex === randomVideoIndex)
@@ -74,9 +68,9 @@ const WelcomeSection = () => {
             </a>
           </address>
           <p>
-            Hey there! My name is Jia Hui (Lefan) Tan, and I like building
-            websites/application that looks good, works well, and accessible for
-            everyone!
+            Hey there! My name is <strong>Jia Hui (Lefan) Tan</strong>, and I
+            like building websites/applications that look good, work well, and
+            accessible for everyone!
           </p>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
           <a

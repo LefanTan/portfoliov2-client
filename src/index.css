@@ -67,7 +67,7 @@ button {
 }
 
 .title {
-  font-size: max(8vmax, 4rem);
+  font-size: clamp(4rem, 8vmax, 10rem);
   color: white;
   text-shadow: 7px 7px var(--shadow);
 

@@ -4,6 +4,8 @@
 
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .content {
@@ -11,6 +13,7 @@
   display: flex;
   align-content: center;
   width: 100%;
+  max-width: 120rem;
 }
 
 /**
@@ -25,35 +28,16 @@
 }
 
 .title {
-  font-size: max(9vmax, 4rem);
+  composes: title from "../../index.css";
   color: var(--red);
   text-shadow: 5px 5px rgba(117, 117, 117, 0.342);
-
-  white-space: nowrap;
-  position: relative;
-  width: fit-content;
-  align-self: flex-start;
 }
 
 .title:before {
-  content: "";
-  display: block;
-
-  position: absolute;
-  width: 100%;
-  left: 3px;
-  bottom: -5px;
   border-bottom: 2px solid var(--red);
 }
 
 .title:after {
-  content: "";
-  display: block;
-
-  position: absolute;
-  width: 100%;
-  left: 3px;
-  bottom: -15px;
   border-bottom: 2px dotted var(--red);
 }
 
