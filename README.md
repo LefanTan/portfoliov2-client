@@ -8,6 +8,7 @@ In terms of design, I tried for the _60's 70's retro vibe_. I recently saw a pac
 
 > Wowowow wouldn't that be cool as my websites' theme
 
+I'm not using proper git practices like feat branches, PRs etc because of time, I can only ask for forgiveness at this point.
 So I gave my best to design it, with wireframes and figma as prototyping and all. And the end result I think its.... interesting, so definitely check it out!
 
 PS: You can click on the TV's buttons
@@ -25,4 +26,4 @@ PS: You can click on the TV's buttons
 2. I learned some interesting loading screen technique.
    - Have a Loading div sibling to #root that you can toggle whenever you need to display loading screen
    - use window.onload + document.fonts.ready callback
-3. Designing a template can be tricky 
+3. Designing a template can be tricky
