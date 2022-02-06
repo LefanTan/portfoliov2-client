@@ -6,17 +6,17 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import InView from "react-intersection-observer";
+import ReactMarkdown from "react-markdown";
+import { useNavigate, useParams } from "react-router-dom";
+import old_texture from "../assets/old_texture.jpg";
+import Footer from "./footer";
+import Header from "./header";
+import onToggleLoader from "./helpers/onToggleLoader";
+import useMediaChange from "./helpers/useMediaChange";
+import Modal from "./modal";
 import styles from "./project-details.module.css";
 import { DataContext, ProjectData } from "./services/data.provider";
-import old_texture from "../assets/old_texture.jpg";
-import onToggleLoader from "./helpers/onToggleLoader";
-import ReactMarkdown from "react-markdown";
-import Header from "./header";
-import Footer from "./footer";
-import Modal from "./modal";
-import InView from "react-intersection-observer";
-import useMediaChange from "./helpers/useMediaChange";
 
 const ProjectDetailsPage = () => {
   const params = useParams();
@@ -178,7 +178,10 @@ const ProjectDetailsPage = () => {
                           onClick={imageButtonClickHandler}
                           url={firstMedia}
                           alt="second media"
-                          style={{ float: "right" }}
+                          style={{
+                            float: "right",
+                            marginLeft: matched ? "0rem" : "2rem",
+                          }}
                         />
                       )}
                       <ReactMarkdown>

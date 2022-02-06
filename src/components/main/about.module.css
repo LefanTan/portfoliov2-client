@@ -175,6 +175,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-right: 1rem;
 }
 
 .right_article > h2 {

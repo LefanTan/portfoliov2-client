@@ -1,13 +1,13 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import styles from "./about.module.css";
-import { DataContext } from "../services/data.provider";
-import rotate_bg from "../../assets/rotating.jpg";
-import ReactMarkdown from "react-markdown";
-import profile_backup from "../../assets/profile_backup.jpeg";
-import cutout from "../../assets/cutout.png";
-import { CSSTransition } from "react-transition-group";
 import { CgArrowRight } from "react-icons/cg";
 import InView from "react-intersection-observer";
+import ReactMarkdown from "react-markdown";
+import { CSSTransition } from "react-transition-group";
+import cutout from "../../assets/cutout.png";
+import profile_backup from "../../assets/profile_backup.jpeg";
+import rotate_bg from "../../assets/rotating.jpg";
+import { DataContext } from "../services/data.provider";
+import styles from "./about.module.css";
 
 const AboutSection = () => {
   const dataContext = useContext(DataContext);

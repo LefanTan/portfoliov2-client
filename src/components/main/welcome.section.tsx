@@ -1,18 +1,18 @@
-import styles from "./welcome.module.css";
-import tv from "../../assets/tv.png";
-import photo from "../../assets/tv_photo.jpg";
-import noise from "../../assets/tv_noise.gif";
+import { useContext, useEffect, useState } from "react";
+import {
+  FaEnvelope,
+  FaGithubAlt,
+  FaLinkedinIn,
+  FaRegFilePdf,
+} from "react-icons/fa";
 import nosie_gif from "../../assets/loading_anim.gif";
 import dot from "../../assets/pattern.png";
-import { useContext, useEffect, useState } from "react";
+import tv from "../../assets/tv.png";
+import noise from "../../assets/tv_noise.gif";
+import photo from "../../assets/tv_photo.jpg";
 import { DataContext } from "../services/data.provider";
 import random_video from "../services/random-video";
-import {
-  FaLinkedinIn,
-  FaGithubAlt,
-  FaRegFilePdf,
-  FaEnvelope,
-} from "react-icons/fa";
+import styles from "./welcome.module.css";
 
 const WelcomeSection = () => {
   const [showProfilePic, setShowProfilePic] = useState(false);
@@ -69,8 +69,8 @@ const WelcomeSection = () => {
           </address>
           <p>
             Hey there! My name is <i>Jia Hui (Lefan) Tan</i>, and I like
-            building websites/applications that look good, work well, and
-            accessible for everyone!
+            developing accessible websites/applications with a focus on{" "}
+            <u>front-end</u> design!
           </p>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
           <a

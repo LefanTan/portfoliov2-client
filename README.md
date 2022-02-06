@@ -27,3 +27,5 @@ PS: You can click on the TV's buttons
    - Have a Loading div sibling to #root that you can toggle whenever you need to display loading screen
    - use window.onload + document.fonts.ready callback
 3. Designing a template can be tricky
+4. SSR would be overkill for this website could fix the slow loading time caused by the assets
+   - It's recommended that I use webp for images but everytime I convert to webp the file size gets larger, it's weird
