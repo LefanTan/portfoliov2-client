@@ -66,6 +66,16 @@ nav ul {
   filter: brightness(0.5);
 }
 
+.header li,
+.side_nav ul > * {
+  transition: 200ms;
+}
+
+.header li:hover,
+.side_nav ul > *:hover {
+  transform: scale(1.075);
+}
+
 .header_anchor {
   font-family: "Market Deco", sans-serif;
   color: white;
@@ -88,10 +98,6 @@ nav ul {
   height: 3px;
   border-bottom: 3px dotted var(--red);
   transition: 200ms;
-}
-
-.header_anchor:hover {
-  font-size: 1.4rem;
 }
 
 .header_anchor:hover:after {
