@@ -1,11 +1,11 @@
-import styles from "./header.module.css";
-import { CgMenuGridO, CgArrowRight } from "react-icons/cg";
-import { CSSTransition } from "react-transition-group";
 import { useEffect, useRef, useState } from "react";
-import { throttle } from "./helpers/lodash";
+import { CgArrowRight, CgMenuGridO } from "react-icons/cg";
 import { HashLink } from "react-router-hash-link";
-import useMediaChange from "./helpers/useMediaChange";
+import { CSSTransition } from "react-transition-group";
 import title from "../assets/title.png";
+import styles from "./header.module.css";
+import { throttle } from "./helpers/lodash";
+import useMediaChange from "./helpers/useMediaChange";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -111,12 +111,8 @@ const Header = () => {
                 </HashLink>
               </li>
               <li>
-                <HashLink
-                  to="/#projects"
-                  replace
-                  className={styles.header_anchor}
-                >
-                  Projects
+                <HashLink to="/#about" replace className={styles.header_anchor}>
+                  About
                 </HashLink>
               </li>
               <li>
@@ -125,8 +121,12 @@ const Header = () => {
                 </HashLink>
               </li>
               <li>
-                <HashLink to="/#about" replace className={styles.header_anchor}>
-                  About
+                <HashLink
+                  to="/#projects"
+                  replace
+                  className={styles.header_anchor}
+                >
+                  Projects
                 </HashLink>
               </li>
               <li>
@@ -162,12 +162,8 @@ const Header = () => {
                 </HashLink>
               </li>
               <li>
-                <HashLink
-                  to="/#projects"
-                  replace
-                  className={styles.header_anchor}
-                >
-                  Projects
+                <HashLink to="/#about" replace className={styles.header_anchor}>
+                  About
                 </HashLink>
               </li>
               <li>
@@ -176,8 +172,12 @@ const Header = () => {
                 </HashLink>
               </li>
               <li>
-                <HashLink to="/#about" replace className={styles.header_anchor}>
-                  About
+                <HashLink
+                  to="/#projects"
+                  replace
+                  className={styles.header_anchor}
+                >
+                  Projects
                 </HashLink>
               </li>
               <li>

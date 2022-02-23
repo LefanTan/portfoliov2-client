@@ -1,13 +1,13 @@
-import { FormEvent, useContext, useRef, useState } from "react";
-import styles from "./contact.module.css";
-import letter from "../../assets/letter.png";
-import { FaLinkedinIn, FaGithubAlt, FaRegFilePdf } from "react-icons/fa";
-import { DataContext } from "../services/data.provider";
 import emailjs from "@emailjs/browser";
+import { FormEvent, useContext, useRef, useState } from "react";
+import { FaGithubAlt, FaLinkedinIn, FaRegFilePdf } from "react-icons/fa";
 import { RiCloseFill } from "react-icons/ri";
+import InView from "react-intersection-observer";
+import letter from "../../assets/letter.png";
 import useMediaChange from "../helpers/useMediaChange";
 import Modal from "../modal";
-import InView from "react-intersection-observer";
+import { DataContext } from "../services/data.provider";
+import styles from "./contact.module.css";
 
 const ContactSection = () => {
   const dataContext = useContext(DataContext);
