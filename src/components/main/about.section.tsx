@@ -11,7 +11,7 @@ import styles from "./about.module.css";
 
 const AboutSection = () => {
   const dataContext = useContext(DataContext);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
 
   const [openMore, setOpen] = useState(false);
   const [tooLong, setIsTooLong] = useState(false);
@@ -23,9 +23,18 @@ const AboutSection = () => {
     if (!ref.current) return;
 
     const tooLong = ref.current?.clientWidth / ref.current?.clientHeight <= 1.5;
+
     setIsTooLong(tooLong && extraContent !== "");
     setExpand(!tooLong);
   }, [extraContent]);
+
+  const refCallback = useCallback(
+    (node: HTMLElement) => {
+      ref.current = node;
+      if (node) resizeHandler();
+    },
+    [resizeHandler]
+  );
 
   useEffect(() => {
     if (!dataContext.profile?.aboutMe) return;
@@ -47,12 +56,11 @@ const AboutSection = () => {
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);
 
-    resizeHandler();
     return () => window.removeEventListener("resize", resizeHandler);
   }, [resizeHandler]);
 
   return (
-    <section ref={ref} id="about" className={styles.section}>
+    <section ref={refCallback} id="about" className={styles.section}>
       <CSSTransition
         appear
         in={!openMore}
@@ -123,6 +131,7 @@ const AboutSection = () => {
                   (tooLong && !expand ? "..." : "") +
                   (expand ? extraContent : "")}
               </ReactMarkdown>
+              <br />
               {tooLong && (
                 <button
                   onClick={() => setExpand(!expand)}
