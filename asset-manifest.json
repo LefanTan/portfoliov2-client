@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.bb83a907.css",
-    "main.js": "/static/js/main.53ebbde6.js",
-    "static/css/207.e8d7a707.chunk.css": "/static/css/207.e8d7a707.chunk.css",
-    "static/js/207.db3bb084.chunk.js": "/static/js/207.db3bb084.chunk.js",
-    "static/css/643.b34a8bba.chunk.css": "/static/css/643.b34a8bba.chunk.css",
-    "static/js/643.10ca0cb9.chunk.js": "/static/js/643.10ca0cb9.chunk.js",
+    "main.css": "/static/css/main.9983ca8d.css",
+    "main.js": "/static/js/main.875a0c16.js",
+    "static/css/207.1576302d.chunk.css": "/static/css/207.1576302d.chunk.css",
+    "static/js/207.279f3f48.chunk.js": "/static/js/207.279f3f48.chunk.js",
+    "static/css/643.c893b413.chunk.css": "/static/css/643.c893b413.chunk.css",
+    "static/js/643.89cf3d90.chunk.js": "/static/js/643.89cf3d90.chunk.js",
     "static/js/169.afa46513.chunk.js": "/static/js/169.afa46513.chunk.js",
     "static/media/old_texture.jpg": "/static/media/old_texture.20c74704c5803dfa713a.jpg",
     "static/media/paper.png": "/static/media/paper.fee06555815862a2d163.png",
@@ -28,7 +28,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.bb83a907.css",
-    "static/js/main.53ebbde6.js"
+    "static/css/main.9983ca8d.css",
+    "static/js/main.875a0c16.js"
   ]
 }
