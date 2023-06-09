@@ -1,5 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import axiosInstance from "./axiosInstance";
+import profileJson from "../../assets/profile.json";
+import projectsJson from "../../assets/projects.json";
 
 export type ProfileData = {
   firstName?: string;
@@ -29,7 +31,7 @@ export type ProjectData = {
   description?: string;
   stack?: string[];
   link?: string;
-  repo?: string;
+  repo?: string | null;
   type?: string;
   purposeAndGoal?: string;
   problems?: string;
@@ -64,23 +66,14 @@ const DataProvider: React.FC = ({ children }) => {
   const [error, setError] = useState();
 
   useEffect(() => {
-    // Get data from API
-    (async () => {
-      try {
-        const userRes = await (await axiosInstance()?.get("/user/1")).data;
-        setUser(userRes);
-        setProfile(userRes.profile);
+    setUser({
+      id: "1",
+      username: "lefan",
+      email: "lefantan@hotmail.com",
+    });
 
-        const projectRes: ProjectData[] = await (
-          await axiosInstance()?.get("/projects/" + userRes.id)
-        ).data;
-        projectRes.sort((a, b) => a.order - b.order);
-        setProjects(projectRes);
-      } catch (err: any) {
-        console.error(err);
-        setError(err);
-      }
-    })();
+    setProfile(profileJson.profile);
+    setProjects(projectsJson as ProjectData[]);
   }, []);
 
   return (

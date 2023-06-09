@@ -42,26 +42,6 @@ const AppRoutes = () => {
     <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
       <Routes>
         <Route
-          path="*"
-          element={
-            <ErrorPage
-              errorCode="404"
-              header="Page Doesn't Exist"
-              description="The home page is pretty cool though, go back there"
-            />
-          }
-        />
-        <Route
-          path="/404"
-          element={
-            <ErrorPage
-              errorCode="404"
-              header="Page Doesn't Exist"
-              description="The home page is pretty cool though, go back there"
-            />
-          }
-        />
-        <Route
           path="/"
           element={
             <Suspense fallback={<Loading />}>
