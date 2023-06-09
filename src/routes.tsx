@@ -42,13 +42,14 @@ const AppRoutes = () => {
     <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
       <Routes>
         <Route
-          path="/"
+          path="/portfoliov2-client"
           element={
             <Suspense fallback={<Loading />}>
               <App />
             </Suspense>
           }
         />
+
         <Route
           path="/project/:name"
           element={
